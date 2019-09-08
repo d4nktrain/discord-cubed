@@ -9,7 +9,15 @@ module.exports = {
 		return cube.type("222").length(10).get();
 	},
 
+	twobld: function () {
+		return cube.type("222").length(10).get();
+	},
+
 	threex: function () {
+		return cube.type("333").length(20).get();
+	},
+
+	threebld: function () {
 		return cube.type("333").length(20).get();
 	},
 

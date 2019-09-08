@@ -5,7 +5,9 @@ const fs = require("fs");
 const defSet = {
 	enabled: true,
 	"twox": { name: "**2x2**", enabled: true, count: 5 },
+	"twobld": { name: "**2bld**", enabled: false, count: 3 },
 	"threex": { name: "**3x3**", enabled: true, count: 5 },
+	"threebld": { name: "**3bld**", enabled: true, count: 3 },
 	"fourx": { name: "**4x4**", enabled: true, count: 5 },
 	"fivex": { name: "**5x5**", enabled: true, count: 5 },
 	"sixx": { name: "**6x6**", enabled: true, count: 3 },
@@ -75,6 +77,10 @@ module.exports.run = async (bot, message, args, cube) => {
 			for(let j = 0; j < event.count; j++) {
 				if(name == "redi") {
 					str.push(`${j + 1}: ${redi.generate_scramble_sequence()}`);
+				} else if(name == "3bld") {
+					str.push(`${j + 1}: ${eval(`scrambles["threebld"]()`)}`);
+				} else if(name == "2bld") {
+					str.push(`${j + 1}: ${eval(`scrambles["twobld"]()`)}`);
 				} else {
 					str.push(`${j + 1}: ${eval(`scrambles["${name}"]()`)}`);
 				}
