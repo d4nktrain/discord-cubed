@@ -79,6 +79,9 @@ bot.on("disconnect", () => console.log("Disconnected! Reconnecting..."));
 bot.on("reconnecting", () => console.log("Reconnected!"));
 
 bot.on("message", async message => {
+	let botGuildMember = message.guild.members.get(bot.user.id)
+	let botName = botGuildMember.displayName
+	if(botName.indexOf("Rehosted Scrambler") != -1) botGuildMember.setNickname(botName.replace('Rehosted Scrambler', "Scrambler (UPS)"))
 	if(message.author.bot) return;
 	if(message.channel.type !== "text") return;
 	let messageArr = message.content.split(/\s+/g);
