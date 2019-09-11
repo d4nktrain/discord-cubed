@@ -4,4 +4,4 @@ module.exports.run = async (bot, message, args, cube) => {
 	let scramble = cube.type("333").length(20).get(scrambles);
 	return message.channel.send(scramble.join("\n\n"));
 };
-module.exports.config = { name: "3bld", aliases: ["3-bld"] };
+module.exports.config = { name: "3bld", aliases: ["3-bld", "3BLD", "3-BLD"] };
