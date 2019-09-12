@@ -96,6 +96,7 @@ module.exports.run = async (bot, message, args, cube) => {
 
 	await bot.compResults.updateOne({ guildID: message.guild.id }, { $set: { events: results } });
 	if(obj.dnf) return message.channel.send(`Successfully submitted ${event.name} time of \`DNF\`!`);
+	message.channel.send('Make sure you submit your average and not a single!').then(msg => {msg.delete(3000)})
 	return message.channel.send(`Successfully submitted a ${event.name} time of \`${obj.time < 60 ? obj.time : toMinSec(obj.time)}\`!`);
 
 	function toMinSec(secStr) {
