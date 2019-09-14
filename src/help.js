@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("WCA", "2x2, 3x3, 3bld, 4x4, 5x5, 6x6, 7x7, skewb, pyra, mega, sq1, clock")
 		.addField("Non-WCA", "redi, ivy, 2x2x3, 2bld")
 		.addField("Multi-Scramble", "To get multiple scrambles, you can do \`s!<scramble> <number of scrambles>\`. For example, doing \`s!3x3 5\` will give you 5, 3x3x3 scrambles.")
-		.addField("Relays", "2-4, 2-5, 2-6, 2-7, 4-7, 5-7, guildford, side\nThese will generate the scrambles for multiple types of puzzles depending on the relay type.", true)
+		.addField("Relays", "2-4, 2-5, 2-6, 2-7, 4-7, 5-7, miniguilford, side\nThese will generate the scrambles for multiple types of puzzles depending on the relay type.", true)
 		.addField("Utility", "prefix, ignore, ignored, updates, stats, info, ping", true)
 		.addField("Comps", "submit, manage, compconfig, config, comp, events, podium")
 		.addField("Gifs", "jay, egg", true)
