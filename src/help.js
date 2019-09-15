@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Relays", "2-4, 2-5, 2-6, 2-7, 4-7, 5-7, miniguilford, side\nThese will generate the scrambles for multiple types of puzzles depending on the relay type.", true)
 		.addField("Utility", "prefix, ignore, ignored, updates, stats, info, ping", true)
 		.addField("Comps", "submit, manage, compconfig, config, comp, events, podium")
-		.addField("Gifs", "jay, egg, hays, usps", true)
+		.addField("Gifs", "jay, egg, hays, usps, rasmus", true)
 		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.gitbook.io/docs/")
 		.setTimestamp()
 		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL);
