@@ -13,4 +13,4 @@ Scrambler has multiple useful tools for managing the use of the bot on your serv
 
 ## Want to contribute to the project or report a bug?
   - You can join the scrambler support server [here](https://discord.gg/XBa52r2) and report bugs or make suggestions in the     `#support` channel.
-  - You can also suggest a command via the issue tracker, and a template for pull requests has been provided at `src\template.js`.
+  - You can also suggest a feature using `s!suggest`
