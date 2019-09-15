@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Utility", "prefix, ignore, ignored, updates, stats, info, ping", true)
 		.addField("Comps", "submit, manage, compconfig, config, comp, events, podium")
 		.addField("Gifs", "jay, egg, hays, usps, rasmus", true)
-		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.gitbook.io/docs/")
+		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.gamegamegame.xyz/")
 		.setTimestamp()
 		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL);
 	message.channel.send(helpEmbed);
