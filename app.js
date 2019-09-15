@@ -37,6 +37,7 @@ bot.on("ready", async () => {
 	const db = await mongoClient.db("Scrambler");
 	bot.guildData = await db.collection("guildData");
 	bot.compResults = await db.collection("Results");
+	bot.suggestions = await db.collection("suggestions");
 
 	console.log("Connected to DB!");
 	await bot.user.setActivity(`Scrambling cubes for ${bot.guilds.size} servers! | s!help`);
@@ -157,7 +158,7 @@ bot.on("message", async message => {
 				await cmd.run(bot, message, args, cube);
 			} catch(error) {
 				console.log(error.stack);
-				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to ecuber#0566 or in the official Scrambler Discord server. Do \`s!info\` for a link.`);
+				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to TheUPSTruck#0811 or in the official Scrambler (UPS) Discord server. Do \`s!info\` for a link.`);
 			}
 		}
 	}
