@@ -10,7 +10,6 @@ module.exports.run = async (bot, message, args) => {
     }
     let suggestion = args.join(" ")
     let file = fs.readFileSync(__dirname + '/../suggestions.json');
-    if(file.indexOf(suggestion) != -1) return message.channel.send("Someone has already suggested that!")
     fs.writeFileSync(__dirname + '/../suggestions.json', file + "\n" + suggestion + " by: " + message.guild.members.get(message.author.id).displayName) 
     console.log("Wrote " + suggestion + " as a suggestion")
     return message.channel.send("Wrote " + suggestion + " as a suggestion!")
