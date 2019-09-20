@@ -1,5 +1,25 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const defSet = {
+	enabled: true,
+	"twox": { name: "**2x2**", enabled: true, count: 5 },
+	"twobld": { name: "**2bld**", enabled: false, count: 3 },
+	"threex": { name: "**3x3**", enabled: true, count: 5 },
+	"threebld": { name: "**3bld**", enabled: true, count: 3 },
+	"fourx": { name: "**4x4**", enabled: true, count: 5 },
+	"fivex": { name: "**5x5**", enabled: true, count: 5 },
+	"sixx": { name: "**6x6**", enabled: true, count: 3 },
+	"sevenx": { name: "**7x7**", enabled: true, count: 3 },
+	"oh": { name: "**OH**", enabled: true, count: 5 },
+	"clockx": { name: "**Clock**", enabled: true, count: 5 },
+	"pyrax": { name: "**Pyraminx**", enabled: true, count: 5 },
+	"megax": { name: "**Megaminx**", enabled: true, count: 5 },
+	"skewbx": { name: "**Skewb**", enabled: true, count: 5 },
+	"squanx": { name: "**Square-1**", enabled: true, count: 5 },
+	"redi": { name: "**Redi Cube**", enabled: false, count: 5 },
+	"twox3": { name: "**2x2x3**", enabled: false, count: 5 },
+	"ivy": { name: "**Ivy Cube**", enabled: false, count: 5 }
+};
 module.exports.run = async (bot, message, args, cube) => {
 	if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You do not have permission to use this command.");
 	if(args[0] == "help" || !args[0]) {
@@ -14,7 +34,9 @@ module.exports.run = async (bot, message, args, cube) => {
 			.addField("Resetting Restrictions", "`s!ignore reset`: Scrambler commands will work in all channels.")
 			.addField("Documentation", "https://scrambler.gitbook.io/docs/util/ignore"));
 	}
-	let guild = await bot.guildData.findOne({ guildID: message.guild.id }, { _id: 0, upsert: true });
+	let guild = await bot.guildData.findOne({ guildID: message.guild.id });
+	if(!guild || !guild.compConfig) await bot.guildData.updateOne({ guildID: message.guild.id }, { $set: { compConfig: defSet } }, { upsert: 1 });
+	guild = await bot.guildData.findOne({ guildID: message.guild.id }, { _id: 0, upsert: true })
 	if(args[0] == "reset") {
 		bot.guildData.updateOne({ guildID: message.guild.id }, { $unset: { restricted: [] } });
 		return message.channel.send("Okay, I have unrestricted all channels on this server.");
