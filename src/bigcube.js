@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 	let cubetype = Math.floor(parseInt(args[0]));
 	if(cubetype < 8) return message.channel.send("Cube type must be higher than 7!")
 	if(cubetype > 100) return message.channel.send("No.")
-	if(scrables > 5) return message.channel.send("No.")
+	if(scrambles > 5) return message.channel.send("No.")
 	let scrambleLength = 100 + (20*cubetype)
 	scrambles = scrambles ? scrambles > 3 ? 3 : scrambles < 0 ? 1 : scrambles : 1;
 	for(let x = 0; x < scrambles; x++) {
