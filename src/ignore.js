@@ -10,6 +10,7 @@ const defSet = {
 	"fivex": { name: "**5x5**", enabled: true, count: 5 },
 	"sixx": { name: "**6x6**", enabled: true, count: 3 },
 	"sevenx": { name: "**7x7**", enabled: true, count: 3 },
+	"eightx": { name: "**8x8**", enabled: false, count: 3 },
 	"oh": { name: "**OH**", enabled: true, count: 5 },
 	"clockx": { name: "**Clock**", enabled: true, count: 5 },
 	"pyrax": { name: "**Pyraminx**", enabled: true, count: 5 },
