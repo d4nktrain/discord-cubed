@@ -33,7 +33,7 @@ bot.on("error", console.error);
 
 bot.on("ready", async () => {
 	console.log(`All commands loaded!`);
-	const mongoClient = await mongodb.MongoClient.connect(bot.settings.mongoAddr, { useNewUrlParser: true });
+	const mongoClient = await mongodb.MongoClient.connect(process.env.MONGO, { useNewUrlParser: true });
 	const db = await mongoClient.db("Scrambler");
 	bot.guildData = await db.collection("guildData");
 	bot.compResults = await db.collection("Results");
@@ -90,7 +90,7 @@ bot.on("message", async message => {
 	let prefix1;
 	let guild = await bot.guildData.findOne({ guildID: message.guild.id }, { _id: 0 });
 	if(guild && guild.prefix) prefix1 = guild.prefix;
-	let prefix2 = bot.settings.prefix;
+	let prefix2 = process.env.PREFIX;
 	let prefix3 = message.guild.me.nickname ? `<@!${bot.user.id}>` : `<@${bot.user.id}>`;
 
 	messageArr[0] = messageArr[0].toLowerCase();
@@ -169,4 +169,4 @@ process.on("unhandledRejection", error => {
 	console.error(`Uncaught Promise Error: \n${error.stack}`);
 });
 
-bot.login(bot.settings.token);
+bot.login(process.env.TOKEN);
