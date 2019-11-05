@@ -11,6 +11,13 @@ bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 bot.settings = require("./settings.json");
 
+function getMode() {
+	console.log("Current bot mode: " + fs.readFileSync("./mode.json").toString())
+	if(fs.readFileSync("./mode.json").toString().indexOf("1") != -1) {
+		return 1;
+	} else return 0;
+}
+
 fs.readdir("./src/", (err, files) => {
 	if(err) console.error(err);
 
@@ -81,7 +88,7 @@ bot.on("reconnecting", () => console.log("Reconnected!"));
 
 bot.on("message", async message => {
 	if(message.author.id == 159985870458322944 && message.guild.id == 582676753512923136) {
-		if(message.content.indexOf(", you just advanced to level ") != -1) {
+		if(message.content.indexOf(", you were promoted to ") != -1) {
 			let member = message.mentions.members.first();
 			if(message.content.indexOf("5") != -1) {
 				let role = message.guild.roles.find(role => role.name === "Active (lvl 5)");
@@ -190,6 +197,9 @@ bot.on("message", async message => {
 		});
 
 		if(cmd) {
+			if(getMode() == 1) {
+				return message.channel.send("Bot is currently under maintenance, please try again soon!")
+			}
 			try {
 				await cmd.run(bot, message, args, cube);
 			} catch(error) {
