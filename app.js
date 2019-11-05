@@ -80,6 +80,42 @@ bot.on("disconnect", () => console.log("Disconnected! Reconnecting..."));
 bot.on("reconnecting", () => console.log("Reconnected!"));
 
 bot.on("message", async message => {
+	if(message.author.id == 159985870458322944 && message.guild.id == 582676753512923136) {
+		if(message.content.indexOf(", you just advanced to level ") != -1) {
+			let member = message.mentions.members.first();
+			if(message.content.indexOf("5") != -1) {
+				let role = message.guild.roles.find(role => role.name === "Active (lvl 5)");
+				if(!member.roles.has(role.id)) {
+					member.addRole(role).catch(console.error);
+				}
+			} else if(message.content.indexOf("10") != -1) {
+				let role = message.guild.roles.find(role => role.name === "Good (lvl 10)");
+				if(!member.roles.has(role.id)) {
+					member.addRole(role).catch(console.error);
+				}
+			} else if(message.content.indexOf("20") != -1) {
+				let role = message.guild.roles.find(role => role.name === "Great (lvl 20)");
+				if(!member.roles.has(role.id)) {
+					member.addRole(role).catch(console.error);
+				}
+			} else if(message.content.indexOf("30") != -1) {
+				let role = message.guild.roles.find(role => role.name === "Brilliant (lvl 30)");
+				if(!member.roles.has(role.id)) {
+					member.addRole(role).catch(console.error);
+				}
+			} else if(message.content.indexOf("40") != -1) {
+				let role = message.guild.roles.find(role => role.name === "Exceptional (lvl 40)");
+				if(!member.roles.has(role.id)) {
+					member.addRole(role).catch(console.error);
+				}
+			} else if(message.content.indexOf("50") != -1) {
+				let role = message.guild.roles.find(role => role.name === "Marvellous (lvl 50)");
+				if(!member.roles.has(role.id)) {
+					member.addRole(role).catch(console.error);
+				}
+			}
+		}
+	}
 	let botGuildMember = message.guild.members.get(bot.user.id)
 	let botName = botGuildMember.displayName
 	if(botName.indexOf("Rehosted Scrambler") != -1) botGuildMember.setNickname(botName.replace('Rehosted Scrambler', "Scrambler (UPS)"))
