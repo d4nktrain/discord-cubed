@@ -90,12 +90,13 @@ bot.on("message", async message => {
 	if(message.author.id == 159985870458322944 && message.guild.id == 582676753512923136) {
 		if(message.content.indexOf(", you were promoted to ") != -1) {
 			let member = message.mentions.members.first();
-			let roleFive = message.guild.roles.find(role => role.name === "Active (lvl 5)");
+			let roleFive = message.guild.roles.find(role => role.name === "Newcomer (lvl 5)");
 			let roleTen = message.guild.roles.find(role => role.name === "Good (lvl 10)");
 			let roleTwenty = message.guild.roles.find(role => role.name === "Great (lvl 20)");
 			let roleThirty = message.guild.roles.find(role => role.name === "Brilliant (lvl 30)");
 			let roleFourty = message.guild.roles.find(role => role.name === "Exceptional (lvl 40)");
 			let roleFifty = message.guild.roles.find(role => role.name === "Marvellous (lvl 50)");
+			let roleSixty = message.guild.roles.find(role => role.name === "Platinum (lvl 60)");
 			if(message.content.indexOf(", you were promoted to **level 5") != -1) {
 				member.addRole(roleFive).catch(console.error);
 			} else if(message.content.indexOf(", you were promoted to **level 10") != -1) {
@@ -108,6 +109,8 @@ bot.on("message", async message => {
 				member.addRole(roleFourty).catch(console.error);
 			} else if(message.content.indexOf(", you were promoted to **level 50") != -1) {
 				member.addRole(roleFifty).catch(console.error);
+			} else if(message.content.indexOf(", you were promoted to **level 60") != -1) {
+				member.addRole(roleSixty).catch(console.error);
 			}
 		}
 	}
