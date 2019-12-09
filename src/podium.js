@@ -46,20 +46,14 @@ module.exports.run = async (bot, message, args, cube) => {
 				podium[0] = `${config[key[ev]].name} **Podium**\n`;
 				if(!entries[0].dnf) {
 					podium[1] = `**1st Place:** <@${entries[0].userID}> with a result of ${toMinSec(entries[0].time)}`;
-				} else {
-					podium[1] = `**1st Place:** <@${entries[0].userID}> with a result of DNF`;
 				}
 				if(entries[1]) {
 					if(!entries[1].dnf) {
 						podium[2] = `**2nd Place:** <@${entries[1].userID}> with a result of ${toMinSec(entries[1].time)}`;
-					} else {
-						podium[2] = `**2nd Place:** <@${entries[1].userID}> with a result of DNF`;
 					}
 					if(entries[2]) {
 						if(!entries[2].dnf) {
 							podium[3] = `**3rd Place:** <@${entries[2].userID}> with a result of ${toMinSec(entries[2].time)}`;
-						} else {
-							podium[3] = `**3rd Place:** <@${entries[2].userID}> with a result of DNF`;
 						}
 					}
 				}
