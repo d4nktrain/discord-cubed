@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Invite Bot", "[Invite Here!](https://discordapp.com/oauth2/authorize?client_id=603602729805414480&scope=bot&permissions=130048)", true)
 		.addField("Support Server", "[Join Here!](https://discord.gg/XBa52r2)", true)
 		.addField("GitHub Repository", "[Check it out!](https://github.com/DiscordGod/scrambler)", true)
-		.addField("Documentation", "[Click here to read the docs!](https://scrambler.gamegamegame.xyz/)")
+		.addField("Documentation", "[Click here to read the docs!](https://scrambler.ethanh.xyz/)")
 		.addField("Guilds", bot.guilds.size, true)
 		.addField("Human Users", bot.users.filter((usr) => !usr.bot).size, true)
 		.addField("Uptime", `${formatMili(bot.uptime)}`, true)

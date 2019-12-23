@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Comps", "submit, manage, compconfig, config, comp, events, podium")
 		.addField("Famous scrambles (s!famous)", "jay")
 		.addField("Gifs", "jay, egg, hays, usps, rasmus, pepeadmin", true)
-		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.gamegamegame.xyz/")
+		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.ethanh.xyz/")
 		.setTimestamp()
 		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL);
 	message.channel.send(helpEmbed);
