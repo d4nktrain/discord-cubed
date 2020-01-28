@@ -8,8 +8,11 @@ const defSet = {
 	"twobld": { name: "**2bld**", enabled: false, count: 3 },
 	"threex": { name: "**3x3**", enabled: true, count: 5 },
 	"threebld": { name: "**3bld**", enabled: true, count: 3 },
+	"fmc": { name: "**FMC**", enabled: true, count: 3 },
 	"fourx": { name: "**4x4**", enabled: true, count: 5 },
+	"fourbld": { name: "**4bld**", enabled: true, count: 3 },
 	"fivex": { name: "**5x5**", enabled: true, count: 5 },
+	"fivebld": { name: "**5bld**", enabled: true, count: 3 },
 	"sixx": { name: "**6x6**", enabled: true, count: 3 },
 	"sevenx": { name: "**7x7**", enabled: true, count: 3 },
 	"oh": { name: "**OH**", enabled: true, count: 5 },
@@ -81,6 +84,10 @@ module.exports.run = async (bot, message, args, cube) => {
 					str.push(`${j + 1}: ${eval(`scrambles["threebld"]()`)}`);
 				} else if(name == "2bld") {
 					str.push(`${j + 1}: ${eval(`scrambles["twobld"]()`)}`);
+				} else if(name == "4bld") {
+					str.push(`${j + 1}: ${eval(`scrambles["fourbld"]()`)}`);
+				} else if(name == "5bld") {
+					str.push(`${j + 1}: ${eval(`scrambles["fivebld"]()`)}`);
 				} else {
 					str.push(`${j + 1}: ${eval(`scrambles["${name}"]()`)}`);
 				}

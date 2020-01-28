@@ -21,6 +21,10 @@ module.exports = {
 		return cube.type("333").length(20).get();
 	},
 
+	fmc: function () {
+		return "R' U' F " + cube.type("333").length(20).get() + " R' U' F"
+	},
+
 	fourx: function () {
 		let msgArr = [];
 		let wides = ["Rw", "Uw", "Fw"];
@@ -40,7 +44,45 @@ module.exports = {
 		return msgArr.join(" ");
 	},
 
+	fourbld: function () {
+		let msgArr = [];
+		let wides = ["Rw", "Uw", "Fw"];
+		let nonWides = ["R", "U", "L", "D", "F", "B"];
+		let scramble = [];
+		let i = 0;
+		while(scramble.length < 40) {
+			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
+			if(i > 0 && (scramble[i - 1] === move)) {
+				continue;
+			} else {
+				scramble.push(move);
+				i++;
+			}
+		}
+		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
+		return msgArr.join(" ");
+	},
+
 	fivex: function () {
+		let msgArr = [];
+		let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw"];
+		let nonWides = ["R", "U", "L", "D", "F", "B"];
+		let scramble = [];
+		let i = 0;
+		while(scramble.length < 60) {
+			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
+			if(i > 0 && (scramble[i - 1] === move)) {
+				continue;
+			} else {
+				scramble.push(move);
+				i++;
+			}
+		}
+		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
+		return msgArr.join(" ");
+	},
+
+	fivebld: function () {
 		let msgArr = [];
 		let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw"];
 		let nonWides = ["R", "U", "L", "D", "F", "B"];
