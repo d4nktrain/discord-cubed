@@ -20,4 +20,4 @@ module.exports.run = async (bot, message, args, cube) => {
 	}
 	return message.channel.send(msgArr.join("\n\n"));
 };
-module.exports.config = { name: "4x4", aliases: ["4x4x4"] };
+module.exports.config = { name: "4x4", aliases: ["4x4x4", "4-bld", "4BLD", "4-BLD"]};
