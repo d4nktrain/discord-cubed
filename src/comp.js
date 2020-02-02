@@ -22,7 +22,7 @@ const defSet = {
 	"skewbx": { name: "**Skewb**", enabled: true, count: 5 },
 	"squanx": { name: "**Square-1**", enabled: true, count: 5 },
 	"redi": { name: "**Redi Cube**", enabled: false, count: 5 },
-	"twox3": { name: "**2x2x3**", enabled: false, count: 5 },
+	"x2x3": { name: "**2x2x3**", enabled: false, count: 5 },
 	"ivy": { name: "**Ivy Cube**", enabled: false, count: 5 }
 };
 
@@ -102,6 +102,6 @@ module.exports.run = async (bot, message, args, cube) => {
 		}, 1500);
 	});
 	setTimeout(() => message.channel.send("Competition scrambles complete.").then(msg => msg.delete(10000)), 12500);
-	setTimeout(() => message.channel.send("**Latest Update:**\n•Bot has been moved to a 24/7 server, please see the bottom of the message\n•Added FMC\n•Added 4bld\n•Added 5bld\n•Added more famous scrambles\n•Added reconstructions to famous scrambles\n\n**If you enjoy the use of the bot, please consider donating.**\nJust $5 keeps the bot up for a whole month.\nhttps://paypal.me/HellaBread17Cent"), 12500);
+	setTimeout(() => message.channel.send("**Latest Update:**\n•Bot has been moved to a 24/7 server, please see the bottom of the message\n•Added FMC\n•Added 4bld\n•Added 5bld\n•Added more famous scrambles\n•Added reconstructions to famous scrambles\n\n**If you enjoy the use of the bot, please consider donating. All donations go only to keeping the bot online.**\nJust $5 keeps the bot up for a whole month.\nhttps://paypal.me/HellaBread17Cent"), 12500);
 };
 module.exports.config = { name: "comp", aliases: ["comps", "compscrambles"] };

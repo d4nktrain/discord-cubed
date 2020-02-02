@@ -197,7 +197,7 @@ module.exports = {
 		return cube.type("sq1").get();
 	},
 
-	twox3: function () {
+	x2x3: function () {
 		let slices = ["R2", "R2", "R2", "R2", "F2"];
 		let ud = ["U", "U\'", "U", "U\'", "U2", "D", "D\'", "D", "D\'", "D2"];
 		let scramble = [];
