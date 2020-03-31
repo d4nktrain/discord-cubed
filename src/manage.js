@@ -5,7 +5,7 @@ const aliases = { "2x2": [], "2bld": [], "3x3": [], "3bld": [], "fmc": [], "4x4"
 
 
 module.exports.run = async (bot, message, args, cube) => {
-	if((!message.member.hasPermission("MANAGE_MESSAGES") && !message.member.hasPermission("MANAGE_GUILD")) || message.member.id.toString() == "182620322846081024") return message.reply("You do no have permission to use this command. Missing permission: `MANAGE_MESSAGES`").then(msg => msg.delete(7000));
+	if((!message.member.hasPermission("MANAGE_MESSAGES") && !message.member.hasPermission("MANAGE_GUILD")) || !message.member.id.toString() == "182620322846081024") return message.reply("You do no have permission to use this command. Missing permission: `MANAGE_MESSAGES`").then(msg => msg.delete(7000));
 	let guild = await bot.guildData.findOne({ guildID: message.guild.id });
 	if(!guild || !guild.compConfig) return message.channel.send("Competitions are not yet enabled on this server. To enable them, have someone with the Manage Server permission do \`s!config toggle\`");
 	let config = guild.compConfig;
