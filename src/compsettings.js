@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const defSet = { enabled: true, "twox": { name: "**2x2**", enabled: true, count: 5 }, "twobld": { name: "**2bld**", enabled: true, count: 3 }, "threex": { name: "**3x3**", enabled: true, count: 5 }, "threebld": { name: "**3bld**", enabled: true, count: 3 }, "fmc": { name: "**FMC**", enabled: true, count: 3 }, "fourx": { name: "**4x4**", enabled: true, count: 5 }, "fourbld": { name: "**4bld**", enabled: true, count: 3 }, "fivex": { name: "**5x5**", enabled: true, count: 5 }, "fivebld": { name: "**5bld**", enabled: true, count: 3 }, "sixx": { name: "**6x6**", enabled: true, count: 3 }, "sevenx": { name: "**7x7**", enabled: true, count: 3 }, "oh": { name: "**OH**", enabled: true, count: 5 }, "clockx": { name: "**Clock**", enabled: true, count: 5 }, "pyrax": { name: "**Pyraminx**", enabled: true, count: 5 }, "skewbx": { name: "**Skewb**", enabled: true, count: 5 }, "megax": { name: "**Megaminx**", enabled: true, count: 5 }, "squanx": { name: "**Square-1**", enabled: true, count: 5 }, "redi": { name: "**Redi Cube**", enabled: false, count: 5 }, "x2x3": { name: "**2x2x3**", enabled: false, count: 5 }, "ivy": { name: "**Ivy Cube**", enabled: false, count: 5 } };
-const key = { "2x2": "twox", "2bld": "twobld", "3x3": "threex", "3bld": "threebld", "fmc": "FMC", "4x4": "fourx", "4bld": "fourbld", "5x5": "fivex", "5bld": "fivebld", "6x6": "sixx", "7x7": "sevenx", "oh": "oh", "clock": "clockx", "pyra": "pyrax", "mega": "megax", "skewb": "skewbx", "squareone": "squanx", "redi": "redi", "2x2x3": "x2x3", "ivy": "ivy" };
+const key = { "2x2": "twox", "2bld": "twobld", "3x3": "threex", "3bld": "threebld", "fmc": "fmc", "4x4": "fourx", "4bld": "fourbld", "5x5": "fivex", "5bld": "fivebld", "6x6": "sixx", "7x7": "sevenx", "oh": "oh", "clock": "clockx", "pyra": "pyrax", "mega": "megax", "skewb": "skewbx", "squareone": "squanx", "redi": "redi", "2x2x3": "x2x3", "ivy": "ivy" };
 const aliases = { "2x2": [], "2bld": [], "3x3": [], "3bld": [], "fmc": [], "4x4": [], "4bld": [], "5x5": [], "5bld": [], "6x6": [], "7x7": [], "oh": ["onehanded", "onehand", "one-handed", "one-hand"], "clock": ["cloncc", "clocc"], "pyra": ["pyraminx"], "mega": ["megaminx"], "skewb": ["skoob"], "squareone": ["square-1", "sq1", "squareone", "square1", "square_one", "squan", "sq-1", "sqaun"], "redi": ["redicube", "redi-cube"], "2x2x3": [], "ivy": ["ivy-cube", "ivycube"] };
 
 module.exports.run = async (bot, message, args, cube) => {
@@ -97,7 +97,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		// console.log(`unknown: ${unknown}`);
 		selected.forEach(async event => {
 			// console.log(event);
-			// console.log(config[event]);
+			console.log(config[event]);
 			if(config[event].enabled) {
 				config[event].enabled = false;
 			} else {
