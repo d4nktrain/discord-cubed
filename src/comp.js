@@ -102,6 +102,6 @@ module.exports.run = async (bot, message, args, cube) => {
 		}, 1500);
 	});
 	setTimeout(() => message.channel.send("Competition scrambles complete.").then(msg => msg.delete(10000)), 12500);
-	setTimeout(() => message.channel.send("**Latest Update:**\n•Added 17 more egg gifs\n\n**If you enjoy the use of the bot, please consider donating. All donations go only to keeping the bot online.**\nJust $5 keeps the bot up for a whole month.\nhttps://paypal.me/HellaBread17Cent"), 12500);
+	setTimeout(() => message.channel.send("**Latest Update:**\n•Fixed FMC not being toggable\n\n**If you enjoy the use of the bot, please consider donating. All donations go only to keeping the bot online.**\nJust $5 keeps the bot up for a whole month.\nhttps://paypal.me/HellaBread17Cent"), 12500);
 };
 module.exports.config = { name: "comp", aliases: ["comps", "compscrambles"] };
