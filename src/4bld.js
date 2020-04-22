@@ -3,11 +3,11 @@ module.exports.run = async (bot, message, args, cube) => {
 	let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 10 ? 10 : scrambles < 0 ? 1 : scrambles : 1;
 	for(let x = 0; x < scrambles; x++) {
-		let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw"];
+		let wides = ["Rw", "Uw", "Fw"];
 		let nonWides = ["R", "U", "L", "D", "F", "B"];
 		let scramble = [];
 		let i = 0;
-		while(scramble.length < 60) {
+		while(scramble.length < 40) {
 			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
 			if(i > 0 && (scramble[i - 1] === move)) {
 				continue;
@@ -20,4 +20,4 @@ module.exports.run = async (bot, message, args, cube) => {
 	}
 	return message.channel.send(msgArr.join("\n\n"));
 };
-module.exports.config = { name: "5x5", aliases: ["5x5x5", "isthata10x10", "5-bld", "5BLD", "5-BLD"] };
+module.exports.config = { name: "fourBLD", aliases: ["4-BLD", "4bld"]};
