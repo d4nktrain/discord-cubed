@@ -20,4 +20,4 @@ module.exports.run = async (bot, message, args) => {
 	}
 	return message.channel.send(msgArr.join("\n\n"));
 };
-module.exports.config = { name: "6x6", aliases: ["6x6x6"] };
+module.exports.config = { name: "6x6", aliases: ["6x6x6", "6"] };
