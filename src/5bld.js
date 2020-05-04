@@ -1,3 +1,7 @@
+function randomElement(arr) {
+    return arr[Math.floor(Math.random()*arr.length)];
+}
+
 module.exports.run = async (bot, message, args, cube) => {
 	let msgArr = [];
 	let scrambles = parseInt(args[0]);
@@ -19,8 +23,21 @@ module.exports.run = async (bot, message, args, cube) => {
 		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
 	}
 	for(i = 0; i < msgArr.length; i++) {
-		var rotation = randomElement(["", "y", "y2", "y'"]);
-		msgArr[i] = applyRotationForAlgorithm(msgArr[i], rotation)
+		var rotation1 = randomElement(["3Rw", "3Rw2", "3Rw'"])
+        var rotation2 = randomElement(["3Fw", "3Fw2", "3Fw'"])
+        var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
+        var whatRotation = Math.floor(Math.random()*5)
+        if(whatRotation == 0) {
+		    msgArr[i] = msgArr[i] + " " + rotation1 + " " + rotation3
+        } else if(whatRotation == 1) {
+		    msgArr[i] = msgArr[i] + " " + rotation2 + " " + rotation3
+        } else if(whatRotation == 2) {
+		    msgArr[i] = msgArr[i] + " " + rotation1
+        } else if(whatRotation == 3) {
+		    msgArr[i] = msgArr[i] + " " + rotation2
+        } else if(whatRotation == 4) {
+		    msgArr[i] = msgArr[i] + " " + rotation3
+        }
 	}
 	return message.channel.send(msgArr.join("\n\n"));
 };

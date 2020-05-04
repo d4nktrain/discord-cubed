@@ -4,31 +4,8 @@ import {util_scramble} from "./src/ilovecstimer/utilscramble";
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
 
-// http://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
-function replaceAll(str,mapObj) {
-	if (!mapObj)
-		return str;
-	var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
-
-	return str.replace(re, function(matched){
-		return mapObj[matched];
-	});
-}
-
 function randomElement(arr) {
 	return arr[Math.floor(Math.random()*arr.length)];
-}
-
-function applyRotationForAlgorithm(alg, rot) {
-	var mapObj;
-	if (rot=="y")
-		mapObj = {R:"F", r:"f", F:"L", f:"l", L:"B", l:"b", B:"R", b:"r"};
-	if (rot=="y'")
-		mapObj = {R:"B", r:"b", B:"L", b:"l", L:"F", l:"f", F:"R", f:"r"};
-	if (rot=="y2")
-		mapObj = {R:"L", r:"l", L:"R", l:"r", B:"F", b:"f", F:"B", f:"b"};
-
-	return replaceAll(alg, mapObj);
 }
 
 module.exports = {
@@ -41,7 +18,21 @@ module.exports = {
 	},
 
 	twobld: function () {
-		return cube.type("222").length(10).get();
+		var rotation1 = randomElement(["x", "x2", "x'"])
+        var rotation2 = randomElement(["z", "z2", "z'"])
+        var rotation3 = randomElement(["y", "y2", "y'"])
+        var whatRotation = Math.floor(Math.random()*5)
+        if(whatRotation == 0) {
+		    return cube.type("222").length(10).get() + " " + rotation1 + " " + rotation3
+        } else if(whatRotation == 1) {
+		    return cube.type("222").length(10).get() + " " + rotation2 + " " + rotation3
+        } else if(whatRotation == 2) {
+		    return cube.type("222").length(10).get() + " " + rotation1
+        } else if(whatRotation == 3) {
+		    return cube.type("222").length(10).get() + " " + rotation2
+        } else if(whatRotation == 4) {
+		    return cube.type("222").length(10).get() + " " + rotation3
+        }
 	},
 
 	threex: function () {
@@ -49,7 +40,25 @@ module.exports = {
 	},
 
 	threebld: function () {
-		return cube.type("333").length(20).get();
+		var scramble = cube.type("333").length(20).get()
+
+		var rotation1 = randomElement(["Rw", "Rw2", "Rw'"])
+        var rotation2 = randomElement(["Fw", "Fw2", "Fw'"])
+		var rotation3 = randomElement(["Uw", "Uw2", "Uw'"])
+		
+		var whatRotation = Math.floor(Math.random()*5)
+		
+        if(whatRotation == 0) {
+			return scramble + " " + rotation1 + " " + rotation3
+        } else if(whatRotation == 1) {
+			return scramble + " " + rotation2 + " " + rotation3
+        } else if(whatRotation == 2) {
+		    return scramble + " " + rotation1
+        } else if(whatRotation == 3) {
+		    return scramble + " " + rotation2
+        } else if(whatRotation == 4) {
+		    return scramble + " " + rotation3
+        }
 	},
 
 	fmc: function () {
@@ -61,8 +70,21 @@ module.exports = {
 	},
 
 	fourbld: function () {
-		var rotation = randomElement(["", "y", "y2", "y'"]);
-		return applyRotationForAlgorithm(megaScrambler.get444WCAScramble(40), rotation)
+		var rotation1 = randomElement(["x", "x2", "x'"])
+        var rotation2 = randomElement(["z", "z2", "z'"])
+        var rotation3 = randomElement(["y", "y2", "y'"])
+        var whatRotation = Math.floor(Math.random()*5)
+        if(whatRotation == 0) {
+		    return megaScrambler.get444WCAScramble(40) + " " + rotation1 + " " + rotation3
+        } else if(whatRotation == 1) {
+		    return megaScrambler.get444WCAScramble(40) + " " + rotation2 + " " + rotation3
+        } else if(whatRotation == 2) {
+		    return megaScrambler.get444WCAScramble(40) + " " + rotation1
+        } else if(whatRotation == 3) {
+		    return megaScrambler.get444WCAScramble(40) + " " + rotation2
+        } else if(whatRotation == 4) {
+		    return megaScrambler.get444WCAScramble(40) + " " + rotation3
+        }
 	},
 
 	fivex: function () {
@@ -100,8 +122,22 @@ module.exports = {
 			}
 		}
 		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		var rotation = randomElement(["", "y", "y2", "y'"]);
-		return applyRotationForAlgorithm(msgArr.join(" "), rotation);
+
+		var rotation1 = randomElement(["3Rw", "3Rw2", "3Rw'"])
+        var rotation2 = randomElement(["3Fw", "3Fw2", "3Fw'"])
+        var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
+        var whatRotation = Math.floor(Math.random()*5)
+        if(whatRotation == 0) {
+		    return msgArr.join(" ") + " " + rotation1 + " " + rotation3
+        } else if(whatRotation == 1) {
+		    return msgArr.join(" ") + " " + rotation2 + " " + rotation3
+        } else if(whatRotation == 2) {
+		    return msgArr.join(" ") + " " + rotation1
+        } else if(whatRotation == 3) {
+		    return msgArr.join(" ") + " " + rotation2
+        } else if(whatRotation == 4) {
+		    return msgArr.join(" ") + " " + rotation3
+        }
 	},
 
 	sixx: function () {

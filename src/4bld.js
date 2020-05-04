@@ -1,30 +1,7 @@
 import {megaScrambler} from "./ilovecstimer/megascramble";
 
-// http://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
-function replaceAll(str,mapObj) {
-    if (!mapObj)
-        return str;
-    var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
-
-    return str.replace(re, function(matched){
-        return mapObj[matched];
-    });
-}
-
 function randomElement(arr) {
     return arr[Math.floor(Math.random()*arr.length)];
-}
-
-function applyRotationForAlgorithm(alg, rot) {
-    var mapObj;
-    if (rot=="y")
-        mapObj = {R:"F", r:"f", F:"L", f:"l", L:"B", l:"b", B:"R", b:"r"};
-    if (rot=="y'")
-        mapObj = {R:"B", r:"b", B:"L", b:"l", L:"F", l:"f", F:"R", f:"r"};
-    if (rot=="y2")
-        mapObj = {R:"L", r:"l", L:"R", l:"r", B:"F", b:"f", F:"B", f:"b"};
-
-    return replaceAll(alg, mapObj);
 }
 
 module.exports.run = async (bot, message, args, cube) => {
@@ -32,8 +9,21 @@ module.exports.run = async (bot, message, args, cube) => {
 	let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 10 ? 10 : scrambles < 0 ? 1 : scrambles : 1;
 	for(let x = 0; x < scrambles; x++) {
-		var rotation = randomElement(["", "y", "y2", "y'"]);
-		msgArr.push(applyRotationForAlgorithm(megaScrambler.get444WCAScramble(40), rotation))
+		var rotation1 = randomElement(["x", "x2", "x'"])
+        var rotation2 = randomElement(["z", "z2", "z'"])
+        var rotation3 = randomElement(["y", "y2", "y'"])
+        var whatRotation = Math.floor(Math.random()*5)
+        if(whatRotation == 0) {
+		    msgArr.push(megaScrambler.get444WCAScramble(40) + " " + rotation1 + " " + rotation3)
+        } else if(whatRotation == 1) {
+		    msgArr.push(megaScrambler.get444WCAScramble(40) + " " + rotation2 + " " + rotation3)
+        } else if(whatRotation == 2) {
+		    msgArr.push(megaScrambler.get444WCAScramble(40) + " " + rotation1)
+        } else if(whatRotation == 3) {
+		    msgArr.push(megaScrambler.get444WCAScramble(40) + " " + rotation2)
+        } else if(whatRotation == 4) {
+		    msgArr.push(megaScrambler.get444WCAScramble(40) + " " + rotation3)
+        }
 	}
 	return message.channel.send(msgArr.join("\n\n"));
 };
