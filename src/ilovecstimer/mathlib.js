@@ -301,3 +301,5 @@ var mathlib = (function() {
 	}
 
 })();
+
+export {mathlib}

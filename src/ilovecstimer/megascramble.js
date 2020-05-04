@@ -1,3 +1,6 @@
+import {scrambleCS} from "./scrambleCS"
+import {mathlib} from "./mathlib"
+
 var megaScrambler = (function(mega, rn, rndEl) {
 	var cubesuff=["","2","'"];
 	var minxsuff=["","2","'","2'"];
@@ -82,7 +85,7 @@ var megaScrambler = (function(mega, rn, rndEl) {
 
 	function formatScramble(type, length) {
 		var value = args2[type].replace(/%l/g, length).replace(/%c/g, '["","2","\'"]');
-		var ret = scramble.formatScramble(value,length,true,true);
+		var ret = scrambleCS.formatScramble(value,length,true,true);
 		return ret;
 	}
 
@@ -316,4 +319,6 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	    get111111scramble: get111111scramble,
 	  }
 
-})(scramble.mega, mathlib.rn, mathlib.rndEl);
+})(scrambleCS.mega, mathlib.rn, mathlib.rndEl);
+
+export {megaScrambler}

@@ -27,11 +27,11 @@ function applyRotationForAlgorithm(alg, rot) {
 module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? undefined : scrambles : undefined;
-	let scramble = cube.type("333").length(20).get(scrambles);
-	scramble.forEach(scr => {
+	var scramble = cube.type("333").length(20).get(scrambles);
+	for(i = 0; i < scramble.length; i++) {
 		var rotation = randomElement(["", "y", "y2", "y'"]);
-		scr = applyRotationForAlgorithm(scr, rotation)
-	})
+		scramble[i] = applyRotationForAlgorithm(scramble[i], rotation)
+	}
 	return message.channel.send(scramble.join("\n\n"));
 };
 module.exports.config = { name: "3bld", aliases: ["3-bld", "3-BLD"] };
