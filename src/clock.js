@@ -1,3 +1,5 @@
+import {util_scramble} from "./ilovecstimer/utilscramble"
+
 module.exports.run = async (bot, message, args, cube) => {
 	let arr1 = ["UR", "DR", "DL", "UL", "U", "R", "D", "L", "All"];
 	let arr2 = ["U", "R", "D", "L", "All"];
@@ -29,7 +31,7 @@ module.exports.run = async (bot, message, args, cube) => {
 			let det = Math.round(Math.random());
 			if(det) scramble.push(move);
 		}
-		msgArr.push(scramble.join(" "));
+		msgArr.push(util_scramble.getClockWCAScramble());
 	}
 	return message.channel.send(msgArr.join("\n\n"));
 };
