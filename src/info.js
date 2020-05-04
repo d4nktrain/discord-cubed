@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Human Users", bot.users.filter((usr) => !usr.bot).size, true)
 		.addField("Uptime", `${formatMili(bot.uptime)}`, true)
 		.addField("Creators", "**ecuber#0566**, **Bacon#1153**, and **TheUPSTruck#0001**")
-		.addField("Special Thanks", "**cs0x7f, for the functions I took from cstimer**")
+		.addField("Special Thanks", "**cs0x7f, for the functions I took from cstimer**, as well as **euphwes** and **seanbreckenridge** for having well written code that's basically documentation for cstimer")
 		.addField("Created", bot.user.createdAt)
 		.addField("Description", "Scrambler (UPS) is a Discord bot that generates scrambles for common twisty puzzles. Concept originated from ecuber#0566, this version of bot has been coded mostly by Bacon#1153, revised with new features by ecuber and TheUPSTruck.")
 		.setTimestamp()
