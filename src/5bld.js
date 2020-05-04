@@ -18,10 +18,10 @@ module.exports.run = async (bot, message, args, cube) => {
 		}
 		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
 	}
-	msgArr.forEach(scr => {
+	for(i = 0; i < msgArr.length; i++) {
 		var rotation = randomElement(["", "y", "y2", "y'"]);
-		scr = applyRotationForAlgorithm(scr, rotation)
-	})
+		msgArr[i] = applyRotationForAlgorithm(msgArr[i], rotation)
+	}
 	return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "5bld", aliases: ["5-BLD", "5-BLD"] };

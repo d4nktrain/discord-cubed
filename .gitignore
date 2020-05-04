@@ -9,6 +9,7 @@ mongorestricted.js
 test.js
 test2.js
 crap/
+.idea/
 
 # Logs
 logs

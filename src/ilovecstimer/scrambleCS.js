@@ -1,5 +1,7 @@
 "use strict";
-var scramble = (function(rn, rndEl) {
+import {mathlib} from "./mathlib"
+
+var scrambleCS = (function(rn, rndEl) {
 	//var div = $('<div id="scrambleDiv"/>');
 	//var title = $('<div />').addClass('title');
 	//var select = $('<select />');
@@ -367,3 +369,5 @@ var scramble = (function(rn, rndEl) {
 	}
 
 })(mathlib.rn, mathlib.rndEl);
+
+export {scrambleCS}

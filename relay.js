@@ -1,5 +1,36 @@
+import {megaScrambler} from "./src/ilovecstimer/megascramble";
+import {util_scramble} from "./src/ilovecstimer/utilscramble";
+
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
+
+// http://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
+function replaceAll(str,mapObj) {
+	if (!mapObj)
+		return str;
+	var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+
+	return str.replace(re, function(matched){
+		return mapObj[matched];
+	});
+}
+
+function randomElement(arr) {
+	return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function applyRotationForAlgorithm(alg, rot) {
+	var mapObj;
+	if (rot=="y")
+		mapObj = {R:"F", r:"f", F:"L", f:"l", L:"B", l:"b", B:"R", b:"r"};
+	if (rot=="y'")
+		mapObj = {R:"B", r:"b", B:"L", b:"l", L:"F", l:"f", F:"R", f:"r"};
+	if (rot=="y2")
+		mapObj = {R:"L", r:"l", L:"R", l:"r", B:"F", b:"f", F:"B", f:"b"};
+
+	return replaceAll(alg, mapObj);
+}
+
 module.exports = {
 	/*
     start scramble function shits
@@ -26,41 +57,12 @@ module.exports = {
 	},
 
 	fourx: function () {
-		let msgArr = [];
-		let wides = ["Rw", "Uw", "Fw"];
-		let nonWides = ["R", "U", "L", "D", "F", "B"];
-		let scramble = [];
-		let i = 0;
-		while(scramble.length < 40) {
-			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-			if(i > 0 && (scramble[i - 1] === move)) {
-				continue;
-			} else {
-				scramble.push(move);
-				i++;
-			}
-		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		return msgArr.join(" ");
+		return megaScrambler.get444WCAScramble(40)
 	},
 
 	fourbld: function () {
-		let msgArr = [];
-		let wides = ["Rw", "Uw", "Fw"];
-		let nonWides = ["R", "U", "L", "D", "F", "B"];
-		let scramble = [];
-		let i = 0;
-		while(scramble.length < 40) {
-			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-			if(i > 0 && (scramble[i - 1] === move)) {
-				continue;
-			} else {
-				scramble.push(move);
-				i++;
-			}
-		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		return msgArr.join(" ");
+		var rotation = randomElement(["", "y", "y2", "y'"]);
+		return applyRotationForAlgorithm(megaScrambler.get444WCAScramble(40), rotation)
 	},
 
 	fivex: function () {
@@ -98,7 +100,8 @@ module.exports = {
 			}
 		}
 		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		return msgArr.join(" ");
+		var rotation = randomElement(["", "y", "y2", "y'"]);
+		return applyRotationForAlgorithm(msgArr.join(" "), rotation);
 	},
 
 	sixx: function () {
@@ -140,34 +143,7 @@ module.exports = {
 	},
 
 	clockx: function () {
-		let arr1 = ["UR", "DR", "DL", "UL", "U", "R", "D", "L", "All"];
-		let arr2 = ["U", "R", "D", "L", "All"];
-		let arr3 = ["UL", "UR", "DL", "DR"];
-		let pm = ["+", "-"];
-		let msgArr = [];
-		let scramble = [];
-		for(let i = 0, len = arr1.length; i < len; i++) {
-			let move = arr1[i];
-			move += Math.floor(Math.random() * 6);
-			move += pm[Math.round(Math.random())];
-			scramble.push(move);
-		}
-
-		for(let i = 0, len = arr2.length; i < len; i++) {
-			let move = arr2[i];
-			if(i === 0) scramble.push("y2");
-			move += Math.floor(Math.random() * 6);
-			move += pm[Math.round(Math.random())];
-			scramble.push(move);
-		}
-
-		for(let i = 0, len = arr3.length; i < len; i++) {
-			let move = arr3[i];
-			let det = Math.round(Math.random());
-			if(det) scramble.push(move);
-		}
-		msgArr.push(scramble.join(" "));
-		return msgArr.join(" ");
+		return util_scramble.getClockWCAScramble()
 	},
 
 	megax: function () {
