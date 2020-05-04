@@ -65,6 +65,10 @@ module.exports.run = async (bot, message, args, cube) => {
 
 	if(!event) return message.channel.send(`Event ${args[0]} is not recognized. Run \`s!events\` to see the correct naming scheme.`);
 
+	if(message.content.toLowerCase().indexOf("fmc") != -1) {
+		message.channel.send("If your time is a whole number, make sure you add .00 at the end!").then((msg) => {msg.delete(5000)})
+	}
+
 	let evResults;
 	if(!results[args[0]]) {
 		results[args[0]] = {};
