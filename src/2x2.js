@@ -5,4 +5,4 @@ module.exports.run = async (bot, message, args, cube) => {
 	return message.channel.send(scramble.join("\n\n"));
 };
 // 2x2 scramble generator, scrambo library + multi scramble technology
-module.exports.config = { name: "2x2", aliases: ["2x2x2", "4cube", "minicube", "2a"] };
+module.exports.config = { name: "2x2", aliases: ["2x2x2", "4cube", "minicube", "2"] };

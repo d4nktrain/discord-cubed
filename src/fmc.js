@@ -7,4 +7,4 @@ module.exports.run = async (bot, message, args, cube) => {
 	}
 	return message.channel.send(scramble.join("\n\n"));
 };
-module.exports.config = { name: "fmc", aliases: ["FMC"] };
+module.exports.config = { name: "fmc", aliases: ["FMC", "f"] };
