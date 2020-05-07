@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		let scramble = util_scramble.getRediWCAScramble(8)
 		msgArr.push(scramble);
 	}
-	return message.channel.send(msgArr.join("\n\n"));
+	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
 };
 
 module.exports.config = { name: "redi", aliases: ["redicube"] };

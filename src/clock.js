@@ -7,6 +7,6 @@ module.exports.run = async (bot, message, args, cube) => {
 	for(let x = 0; x < scrambles; x++) {
 		msgArr.push(util_scramble.getClockWCAScramble());
 	}
-	return message.channel.send(msgArr.join("\n\n"));
+	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "clock", aliases: ["watch", "cloncc", "clocc", "c"] };
