@@ -1,5 +1,5 @@
-import {megaScrambler} from "./src/ilovecstimer/megascramble";
 import {util_scramble} from "./src/ilovecstimer/utilscramble";
+import {scramble_444} from "./src/ilovecstimer/scramble_444";
 
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
@@ -66,7 +66,7 @@ module.exports = {
 	},
 
 	fourx: function () {
-		return megaScrambler.get444WCAScramble(40)
+		return scramble_444.getRandomScramble()
 	},
 
 	fourbld: function () {
@@ -75,15 +75,15 @@ module.exports = {
         var rotation3 = randomElement(["y", "y2", "y'"])
         var whatRotation = Math.floor(Math.random()*5)
         if(whatRotation == 0) {
-		    return megaScrambler.get444WCAScramble(40) + " " + rotation1 + " " + rotation3
+		    return scramble_444.getRandomScramble() + rotation1 + " " + rotation3
         } else if(whatRotation == 1) {
-		    return megaScrambler.get444WCAScramble(40) + " " + rotation2 + " " + rotation3
+		    return scramble_444.getRandomScramble() + rotation2 + " " + rotation3
         } else if(whatRotation == 2) {
-		    return megaScrambler.get444WCAScramble(40) + " " + rotation1
+		    return scramble_444.getRandomScramble() + rotation1
         } else if(whatRotation == 3) {
-		    return megaScrambler.get444WCAScramble(40) + " " + rotation2
+		    return scramble_444.getRandomScramble() + rotation2
         } else if(whatRotation == 4) {
-		    return megaScrambler.get444WCAScramble(40) + " " + rotation3
+		    return scramble_444.getRandomScramble() + rotation3
         }
 	},
 

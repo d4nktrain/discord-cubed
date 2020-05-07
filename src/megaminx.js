@@ -15,6 +15,6 @@ module.exports.run = async (bot, message, args, cube) => {
 		}
 		msgArr.push(`\`\`\`\n${scramble.join(" ").replace(/U\n R/g, "U\nR").replace(/U'\n R/g, "U\'\nR")}\n\`\`\``);
 	}
-	return message.channel.send(msgArr.join("\n\n"));
+	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "megaminx", aliases: ["mega", "minx", "mm", "m"] };

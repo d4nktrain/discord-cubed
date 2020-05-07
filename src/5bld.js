@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		}
 		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
 	}
-	for(i = 0; i < msgArr.length; i++) {
+	for(var i = 0; i < msgArr.length; i++) {
 		var rotation1 = randomElement(["3Rw", "3Rw2", "3Rw'"])
         var rotation2 = randomElement(["3Fw", "3Fw2", "3Fw'"])
         var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
@@ -39,6 +39,6 @@ module.exports.run = async (bot, message, args, cube) => {
 		    msgArr[i] = msgArr[i] + " " + rotation3
         }
 	}
-	return message.channel.send(msgArr.join("\n\n"));
+	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "5bld", aliases: ["5-BLD", "5-BLD", "5b"] };

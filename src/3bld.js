@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? undefined : scrambles : undefined;
 	var scramble = cube.type("333").length(20).get(scrambles);
-	for(i = 0; i < scramble.length; i++) {
+	for(var i = 0; i < scramble.length; i++) {
 		var rotation1 = randomElement(["Rw", "Rw2", "Rw'"])
         var rotation2 = randomElement(["Fw", "Fw2", "Fw'"])
         var rotation3 = randomElement(["Uw", "Uw2", "Uw'"])
@@ -23,6 +23,6 @@ module.exports.run = async (bot, message, args, cube) => {
 		    scramble[i] = scramble[i] + " " + rotation3
         }
 	}
-	return message.channel.send(scramble.join("\n\n"));
+	for(var i = 0; i < scramble.length; i++) {scramble[i] = (i+1) + ". " + scramble[i]}; return message.channel.send(scramble.join("\n\n"));
 };
 module.exports.config = { name: "3bld", aliases: ["3-bld", "3-BLD", "3b"] };

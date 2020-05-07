@@ -1,5 +1,8 @@
 "use strict";
 
+import {scramble_333} from "./scramble_333_edit";
+import {mathlib} from "./mathlib";
+
 var scramble_444 = (function(rn, Cnk, circle) {
 
   function createArray(length1, length2) {
@@ -2526,3 +2529,5 @@ var scramble_444 = (function(rn, Cnk, circle) {
   }
 
 })(mathlib.rn, mathlib.Cnk, mathlib.circle);
+
+export {scramble_444}
