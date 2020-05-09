@@ -9,6 +9,7 @@ module.exports.run = async (bot, message, args) => {
 			.setDescription("Usage: \`s!suggest <suggestion>\`"))
     }
     let suggestion = args.join(" ")
+    if(suggestion.indexOf("1x1") != -1) return message.channel.send("no. it could've been funny the first time someone said it. stop.")
     let file = fs.readFileSync(__dirname + '/../suggestions.json');
     fs.writeFileSync(__dirname + '/../suggestions.json', file + "\n" + suggestion + " by: " + message.guild.members.get(message.author.id).displayName) 
     console.log("Wrote " + suggestion + " as a suggestion")
