@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args, cube) => {
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1;
 	let slices = ["R2", "R2", "R2", "R2", "F2"];
 	let ud = ["U", "U\'", "U", "U\'", "U2", "D", "D\'", "D", "D\'", "D2"];
-	for(let x = 0; x < scrambles; x++) {
+	for(var i = 0; i < scrambles; i++) {
 		let scramble = [];
 		for(let i = 0; i < Math.round(Math.random() * (11 - 7) + 7); i++) {
 			if(i % 2 == 0) {
