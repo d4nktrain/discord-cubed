@@ -2,7 +2,7 @@ module.exports.run = async (bot, message, args) => {
     let msgArr = [];
     let scrambles = parseInt(args[0]);
     scrambles = scrambles ? scrambles > 3 ? 3 : scrambles < 0 ? 1 : scrambles : 1;
-    for(let x = 0; x < scrambles; x++) {
+    for(var i = 0; i < scrambles; i++) {
         let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw", "3Rw", "3Uw", "3Lw", "3Dw", "3Fw", "3Bw", "4Rw", "4Uw", "4Lw", "4Dw", "4Fw", "4Bw"];
         let nonWides = ["R", "U", "L", "D", "F", "B"];
         let scramble = [];

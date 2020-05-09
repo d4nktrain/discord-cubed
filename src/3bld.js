@@ -4,7 +4,7 @@ function randomElement(arr) {
 
 module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0])
-	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? undefined : scrambles : undefined
+	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
 	var scramble = cube.type("333").length(20).get(scrambles)
 	for(var i = 0; i < scramble.length; i++) {
 		var rotation1 = randomElement(["Rw", "Rw2", "Rw'"])

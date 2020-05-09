@@ -278,6 +278,10 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	  	return megascramble("sfl", 25);
 	  }
 
+	  function get111scramble() {
+		return megascramble("111", 25)
+	  }
+
 	  return {
 	    get444WCAScramble: get444WCAScramble,
 	    get444SiGNScramble: get444SiGNScramble,
@@ -317,6 +321,8 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	    get999scramble: get999scramble,
 	    get101010scramble: get101010scramble,
 	    get111111scramble: get111111scramble,
+
+		get111scramble: get111scramble,
 	  }
 
 })(scrambleCS.mega, mathlib.rn, mathlib.rndEl);
