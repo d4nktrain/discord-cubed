@@ -1,19 +1,19 @@
-const Discord = require("discord.js");
-const eventList = ["2x2", "2bld", "3x3", "3bld", "fmc", "4x4", "4bld", "5x5", "5bld", "6x6", "7x7", "oh", "clock", "pyra", "mega", "skewb", "squareone", "redi", "2x2x3", "ivy"];
-const key = { "2x2": "twox", "2bld": "twobld", "3x3": "threex", "3bld": "threebld", "fmc": "FMC", "4x4": "fourx", "4bld": "fourbld", "5x5": "fivex", "5bld": "fivebld", "6x6": "sixx", "7x7": "sevenx", "oh": "oh", "clock": "clockx", "pyra": "pyrax", "mega": "megax", "skewb": "skewbx", "squareone": "squanx", "redi": "redi", "2x2x3": "x2x3", "ivy": "ivy" };
-const aliases = { "2x2": [], "2bld": [], "3x3": [], "3bld": [], "fmc": [], "4x4": [], "4bld": [], "5x5": [], "5bld": [], "6x6": [], "7x7": [], "oh": ["onehanded", "onehand", "one-handed", "one-hand"], "clock": ["cloncc", "clocc"], "pyra": ["pyraminx"], "mega": ["megaminx"], "skewb": ["skoob"], "squareone": ["square-1", "sq1", "squareone", "square1", "square_one", "squan", "sq-1", "sqaun"], "redi": ["redicube", "redi-cube"], "2x2x3": [], "ivy": ["ivy-cube", "ivycube"] };
+const Discord = require("discord.js")
+const eventList = ["2x2", "2bld", "3x3", "3bld", "fmc", "4x4", "4bld", "5x5", "5bld", "6x6", "7x7", "oh", "clock", "pyra", "mega", "skewb", "squareone", "redi", "2x2x3", "ivy"]
+const key = { "2x2": "twox", "2bld": "twobld", "3x3": "threex", "3bld": "threebld", "fmc": "FMC", "4x4": "fourx", "4bld": "fourbld", "5x5": "fivex", "5bld": "fivebld", "6x6": "sixx", "7x7": "sevenx", "oh": "oh", "clock": "clockx", "pyra": "pyrax", "mega": "megax", "skewb": "skewbx", "squareone": "squanx", "redi": "redi", "2x2x3": "x2x3", "ivy": "ivy" }
+const aliases = { "2x2": [], "2bld": [], "3x3": [], "3bld": [], "fmc": [], "4x4": [], "4bld": [], "5x5": [], "5bld": [], "6x6": [], "7x7": [], "oh": ["onehanded", "onehand", "one-handed", "one-hand"], "clock": ["cloncc", "clocc"], "pyra": ["pyraminx"], "mega": ["megaminx"], "skewb": ["skoob"], "squareone": ["square-1", "sq1", "squareone", "square1", "square_one", "squan", "sq-1", "sqaun"], "redi": ["redicube", "redi-cube"], "2x2x3": [], "ivy": ["ivy-cube", "ivycube"] }
 
 
 module.exports.run = async (bot, message, args, cube) => {
-	if(!message.member.hasPermission("MANAGE_MESSAGES") && !message.member.hasPermission("MANAGE_GUILD")) return message.reply("You do no have permission to use this command. Missing permission: `MANAGE_MESSAGES`").then(msg => msg.delete(7000));
-	let guild = await bot.guildData.findOne({ guildID: message.guild.id });
-	if(!guild || !guild.compConfig) return message.channel.send("Competitions are not yet enabled on this server. To enable them, have someone with the Manage Server permission do \`s!config toggle\`");
-	let config = guild.compConfig;
+	if(!message.member.hasPermission("MANAGE_MESSAGES") && !message.member.hasPermission("MANAGE_GUILD")) return message.reply("You do no have permission to use this command. Missing permission: `MANAGE_MESSAGES`").then(msg => msg.delete(7000))
+	let guild = await bot.guildData.findOne({ guildID: message.guild.id })
+	if(!guild || !guild.compConfig) return message.channel.send("Competitions are not yet enabled on this server. To enable them, have someone with the Manage Server permission do \`s!config toggle\`")
+	let config = guild.compConfig
 
-	let results = await bot.compResults.findOne({ guildID: message.guild.id });
-	if(!results) return message.channel.send("There are no entered times for this competition. To update competition settings, do \`s!compsettings\`.");
-	results = await bot.compResults.findOne({ guildID: message.guild.id });
-	results = results.events;
+	let results = await bot.compResults.findOne({ guildID: message.guild.id })
+	if(!results) return message.channel.send("There are no entered times for this competition. To update competition settings, do \`s!compsettings\`.")
+	results = await bot.compResults.findOne({ guildID: message.guild.id })
+	results = results.events
 
 	let embed = new Discord.RichEmbed()
 		.setTitle("Manage Comp Entries")
@@ -22,10 +22,10 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Viewing Submissions", "**s!manage view <event>**\n  View all submissions for the specified event.")
 		.addField("Deleting Submissions", "**s!manage <event> <@usermention, ID, or username>**\n  Delete a user's submission in the specified event. This action is irreversible.")
 		.addField("Resetting all Submissions", "**s!manage reset**\nThis will delete all submitted times. You will be prompted to make sure you want to complete this action, as it is completely irreversible.")
-		.addField("Documentation", "https://scrambler.gitbook.io/docs/comps/manage");
+		.addField("Documentation", "https://scrambler.gitbook.io/docs/comps/manage")
 
 	if(!args[0] || args[0] == "help") {
-		return message.channel.send(embed);
+		return message.channel.send(embed)
 	}
 
 	if(args[1]) {

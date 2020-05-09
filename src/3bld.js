@@ -1,11 +1,11 @@
 function randomElement(arr) {
-    return arr[Math.floor(Math.random()*arr.length)];
+    return arr[Math.floor(Math.random()*arr.length)]
 }
 
 module.exports.run = async (bot, message, args, cube) => {
-    let scrambles = parseInt(args[0]);
-	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? undefined : scrambles : undefined;
-	var scramble = cube.type("333").length(20).get(scrambles);
+    let scrambles = parseInt(args[0])
+	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? undefined : scrambles : undefined
+	var scramble = cube.type("333").length(20).get(scrambles)
 	for(var i = 0; i < scramble.length; i++) {
 		var rotation1 = randomElement(["Rw", "Rw2", "Rw'"])
         var rotation2 = randomElement(["Fw", "Fw2", "Fw'"])
@@ -24,5 +24,5 @@ module.exports.run = async (bot, message, args, cube) => {
         }
 	}
 	for(var i = 0; i < scramble.length; i++) {scramble[i] = (i+1) + ". " + scramble[i]}; return message.channel.send(scramble.join("\n\n"));
-};
-module.exports.config = { name: "3bld", aliases: ["3-bld", "3-BLD", "3b"] };
+}
+module.exports.config = { name: "3bld", aliases: ["3-bld", "3-BLD", "3b"] }
