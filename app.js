@@ -189,7 +189,7 @@ bot.on("message", async message => {
 
 		if(cmd) {
 			if(getMode() == 1) {
-				return message.channel.send("Bot is currently under maintenance, please try again soon!")
+				return message.channel.send("Bot is currently updating, should be back in 20 seconds or less.")
 			}
 			try {
 				await cmd.run(bot, message, args, cube);
