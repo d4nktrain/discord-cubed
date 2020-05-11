@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args, cube) => {
 	let embed = new Discord.RichEmbed()
@@ -9,9 +9,9 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Competition Results", "Gone too are the days of manual result compilation! Have your members submit times with \`s!submit <event> <average result>\`, and when you're ready do \`s!podiums\` to have the top 3 from every event posted.")
 		.addField("MongoDB!", "Scrambler is now completely switched to a proper MongoDB database instead of a flimsy JSON file. Your server's data will be more secure, more organized, and reached more quickly on the server.")
 		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL)
-		.setTimestamp();
+		.setTimestamp()
 
-	message.channel.send(embed);
-};
+	message.channel.send(embed)
+}
 
-module.exports.config = { name: "updates", aliases: ["update", "whatsnew"] };
+module.exports.config = { name: "updates", aliases: ["update", "whatsnew"] }

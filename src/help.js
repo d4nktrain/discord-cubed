@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 module.exports.run = async (bot, message, args, cube) => {
 	let helpEmbed = new Discord.RichEmbed()
 		.setColor("RANDOM")
@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Gifs", "jay, egg, hays, usps, rasmus, pepeadmin", true)
 		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.ethanh.xyz/")
 		.setTimestamp()
-		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL);
-	message.channel.send(helpEmbed);
-};
-module.exports.config = { name: "help", aliases: ["relay"] };
+		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL)
+	message.channel.send(helpEmbed)
+}
+module.exports.config = { name: "help", aliases: ["relay"] }

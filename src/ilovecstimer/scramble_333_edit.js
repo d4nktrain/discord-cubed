@@ -1087,6 +1087,25 @@ var scramble_333 = (function(getNPerm, get8Perm, setNPerm, set8Perm, getNParity,
         return getAnyScramble(0xfff, 0xfff, 0xff, 0xff);
     }
 
+    function getFMCScramble() {
+        var scramble = "",
+            axis1, axis2, axisl1, axisl2;
+        do {
+            scramble = getRandomScramble();
+            var moveseq = scramble.split(' ');
+            if (moveseq.length < 3) {
+                continue;
+            }
+            axis1 = moveseq[0][0];
+            axis2 = moveseq[1][0];
+            axisl1 = moveseq[moveseq.length - 2][0];
+            axisl2 = moveseq[moveseq.length - 3][0];
+        } while (
+            axis1 == 'F' || axis1 == 'B' && axis2 == 'F' ||
+            axisl1 == 'R' || axisl1 == 'L' && axisl2 == 'R');
+        return "R' U' F " + scramble + "R' U' F";
+    }
+
     function cntU(b) {
         for (var c = 0, a = 0; a < b.length; a++) - 1 == b[a] && c++;
         return c
@@ -1393,6 +1412,7 @@ var scramble_333 = (function(getNPerm, get8Perm, setNPerm, set8Perm, getNParity,
         getZBLSScramble: getZBLSScramble,
 
         get3BLDScramble: getRandomOriScramble,
+        getFMCScramble: getFMCScramble,
     };
 })(mathlib.getNPerm, mathlib.get8Perm, mathlib.setNPerm, mathlib.set8Perm, mathlib.getNParity, mathlib.getPruning, mathlib.Cnk, mathlib.fact, mathlib.rn, mathlib.rndEl);
 

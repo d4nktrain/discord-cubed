@@ -13,8 +13,8 @@ module.exports.run = async (bot, message, args, cube) => {
 				scramble.push(`D${Math.random() < 0.5 ? "++" : "--"}`);
 			}
 		}
-		msgArr.push(`\`\`\`\n${scramble.join(" ").replace(/U\n R/g, "U\nR").replace(/U'\n R/g, "U\'\nR")}\n\`\`\``);
+		msgArr.push((i+1) + ". " + `\`\`\`\n${scramble.join(" ").replace(/U\n R/g, "U\nR").replace(/U'\n R/g, "U\'\nR")}\n\`\`\``);
 	}
-	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
+	return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "megaminx", aliases: ["mega", "minx", "mm", "m"] };

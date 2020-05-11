@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 module.exports.run = async (bot, message, args, cube) => {
 	let embed = new Discord.RichEmbed()
 		.setTitle("Event List")
@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Megaminx", "• mega\n• megaminx", true)
 		.addField("Redi Cube", "• redi\n• redicube\n• redi-cube", true)
 		.addField("Ivy Cube", "• ivy \n• ivycube\n• ivy-cube", true)
-		.setTimestamp();
-	message.channel.send(embed);
-};
-module.exports.config = { name: "events", aliases: ["eventlist"] };
+		.setTimestamp()
+	message.channel.send(embed)
+}
+module.exports.config = { name: "events", aliases: ["eventlist"] }

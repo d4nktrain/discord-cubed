@@ -28,17 +28,17 @@ module.exports.run = async (bot, message, args, cube) => {
         var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
         var whatRotation = Math.floor(Math.random()*5)
         if(whatRotation == 0) {
-		    msgArr[i] = msgArr[i] + " " + rotation1 + " " + rotation3
+		    msgArr[i] = (i+1) + ". " + msgArr[i] + " " + rotation1 + " " + rotation3
         } else if(whatRotation == 1) {
-		    msgArr[i] = msgArr[i] + " " + rotation2 + " " + rotation3
+		    msgArr[i] = (i+1) + ". " + msgArr[i] + " " + rotation2 + " " + rotation3
         } else if(whatRotation == 2) {
-		    msgArr[i] = msgArr[i] + " " + rotation1
+		    msgArr[i] = (i+1) + ". " + msgArr[i] + " " + rotation1
         } else if(whatRotation == 3) {
-		    msgArr[i] = msgArr[i] + " " + rotation2
+		    msgArr[i] = (i+1) + ". " + msgArr[i] + " " + rotation2
         } else if(whatRotation == 4) {
-		    msgArr[i] = msgArr[i] + " " + rotation3
+		    msgArr[i] = (i+1) + ". " + msgArr[i] + " " + rotation3
         }
 	}
-	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
+	return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "5bld", aliases: ["5-BLD", "5-BLD", "5b"] };

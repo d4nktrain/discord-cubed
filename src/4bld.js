@@ -14,17 +14,17 @@ module.exports.run = async (bot, message, args, cube) => {
         var rotation3 = randomElement(["y", "y2", "y'"])
         var whatRotation = Math.floor(Math.random()*5)
         if(whatRotation == 0) {
-		    msgArr.push(scramble_444.getRandomScramble() + " " + rotation1 + " " + rotation3)
+		    msgArr.push((i+1) + ". " + scramble_444.getRandomScramble() + " " + rotation1 + " " + rotation3)
         } else if(whatRotation == 1) {
-		    msgArr.push(scramble_444.getRandomScramble() + " " + rotation2 + " " + rotation3)
+		    msgArr.push((i+1) + ". " + scramble_444.getRandomScramble() + " " + rotation2 + " " + rotation3)
         } else if(whatRotation == 2) {
-		    msgArr.push(scramble_444.getRandomScramble() + " " + rotation1)
+		    msgArr.push((i+1) + ". " + scramble_444.getRandomScramble() + " " + rotation1)
         } else if(whatRotation == 3) {
-		    msgArr.push(scramble_444.getRandomScramble() + " " + rotation2)
+		    msgArr.push((i+1) + ". " + scramble_444.getRandomScramble() + " " + rotation2)
         } else if(whatRotation == 4) {
-		    msgArr.push(scramble_444.getRandomScramble() + " " + rotation3)
+		    msgArr.push((i+1) + ". " + scramble_444.getRandomScramble() + " " + rotation3)
         }
 	}
-	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
+	return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "fourBLD", aliases: ["4-BLD", "4bld", "4b"]};
