@@ -198,6 +198,8 @@ bot.on("message", async message => {
 				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to danktrain#0001 or in the official Scrambler (UPS) Discord server. Do \`s!info\` for a link.`);
 			}
 		}
+	} else {
+		message.channel.send("That command is invalid. You can suggest a command with s!suggest *your idea*")
 	}
 }, err => {
 	if(err) console.error(err);
