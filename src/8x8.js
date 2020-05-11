@@ -2,6 +2,7 @@ module.exports.run = async (bot, message, args) => {
     let msgArr = [];
     let scrambles = parseInt(args[0]);
     scrambles = scrambles ? scrambles > 3 ? 3 : scrambles < 0 ? 1 : scrambles : 1;
+    let count = 0
     for(var i = 0; i < scrambles; i++) {
         let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw", "3Rw", "3Uw", "3Lw", "3Dw", "3Fw", "3Bw", "4Rw", "4Uw", "4Lw", "4Dw", "4Fw", "4Bw"];
         let nonWides = ["R", "U", "L", "D", "F", "B"];
@@ -16,7 +17,8 @@ module.exports.run = async (bot, message, args) => {
                 i++;
             }
         }
-        msgArr.push((i+1) + ". " + scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
+        msgArr.push((count+1) + ". " + scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
+        count++
     }
     return message.channel.send(msgArr.join("\n\n"));
 };

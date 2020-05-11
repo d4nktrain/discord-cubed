@@ -1,5 +1,7 @@
 import {util_scramble} from "./src/cstimerlib/utilscramble";
 import {scramble_444} from "./src/cstimerlib/scramble_444";
+import {megaScrambler} from "./src/cstimerlib/megascramble";
+import {scramble_333} from "./src/cstimerlib/scramble_333_edit";
 
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
@@ -36,7 +38,7 @@ module.exports = {
 	},
 
 	threex: function () {
-		return cube.type("333").length(20).get();
+		return scramble_333.getRandomScramble()
 	},
 
 	threebld: function () {
@@ -62,7 +64,7 @@ module.exports = {
 	},
 
 	fmc: function () {
-		return "R' U' F " + cube.type("333").length(20).get() + " R' U' F"
+		return scramble_333.getFMCScramble()
 	},
 
 	fourx: function () {
@@ -88,94 +90,33 @@ module.exports = {
 	},
 
 	fivex: function () {
-		let msgArr = [];
-		let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw"];
-		let nonWides = ["R", "U", "L", "D", "F", "B"];
-		let scramble = [];
-		let i = 0;
-		while(scramble.length < 60) {
-			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-			if(i > 0 && (scramble[i - 1] === move)) {
-				continue;
-			} else {
-				scramble.push(move);
-				i++;
-			}
-		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		return msgArr.join(" ");
+		return megaScrambler.get555WCAScramble(60)
 	},
 
 	fivebld: function () {
-		let msgArr = [];
-		let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw"];
-		let nonWides = ["R", "U", "L", "D", "F", "B"];
-		let scramble = [];
-		let i = 0;
-		while(scramble.length < 60) {
-			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-			if(i > 0 && (scramble[i - 1] === move)) {
-				continue;
-			} else {
-				scramble.push(move);
-				i++;
-			}
-		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-
 		var rotation1 = randomElement(["3Rw", "3Rw2", "3Rw'"])
-        var rotation2 = randomElement(["3Fw", "3Fw2", "3Fw'"])
-        var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
-        var whatRotation = Math.floor(Math.random()*5)
-        if(whatRotation == 0) {
-		    return msgArr.join(" ") + " " + rotation1 + " " + rotation3
-        } else if(whatRotation == 1) {
-		    return msgArr.join(" ") + " " + rotation2 + " " + rotation3
-        } else if(whatRotation == 2) {
-		    return msgArr.join(" ") + " " + rotation1
-        } else if(whatRotation == 3) {
-		    return msgArr.join(" ") + " " + rotation2
-        } else if(whatRotation == 4) {
-		    return msgArr.join(" ") + " " + rotation3
-        }
+		var rotation2 = randomElement(["3Fw", "3Fw2", "3Fw'"])
+		var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
+		var whatRotation = Math.floor(Math.random()*5)
+		if(whatRotation == 0) {
+			return megaScrambler.get555WCAScramble(60) + " " + rotation1 + " " + rotation3
+		} else if(whatRotation == 1) {
+			return megaScrambler.get555WCAScramble(60) + " " + rotation2 + " " + rotation3
+		} else if(whatRotation == 2) {
+			return megaScrambler.get555WCAScramble(60) + " " + rotation1
+		} else if(whatRotation == 3) {
+			return megaScrambler.get555WCAScramble(60) + " " + rotation2
+		} else if(whatRotation == 4) {
+			return megaScrambler.get555WCAScramble(60) + " " + rotation3
+		}
 	},
 
 	sixx: function () {
-		let msgArr = [];
-		let wides = ["Rw", "Uw", "Fw", "Lw", "Dw", "Bw", "3Rw", "3Uw", "3Fw"];
-		let nonWides = ["R", "U", "L", "D", "F", "B"];
-		let scramble = [];
-		let i = 0;
-		while(scramble.length < 80) {
-			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-			if(i > 0 && (scramble[i - 1] === move)) {
-				continue;
-			} else {
-				scramble.push(move);
-				i++;
-			}
-		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		return msgArr.join(" ");
+		return megaScrambler.get666WCAScramble(80)
 	},
 
 	sevenx: function () {
-		let msgArr = [];
-		let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw", "3Rw", "3Uw", "3Lw", "3Dw", "3Fw", "3Bw"];
-		let nonWides = ["R", "U", "L", "D", "F", "B"];
-		let scramble = [];
-		let i = 0;
-		while(scramble.length < 100) {
-			let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-			if(i > 0 && (scramble[i - 1] === move)) {
-				continue;
-			} else {
-				scramble.push(move);
-				i++;
-			}
-		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-		return msgArr.join(" ");
+		return megaScrambler.get777WCAScramble(100)
 	},
 
 	clockx: function () {
@@ -183,18 +124,7 @@ module.exports = {
 	},
 
 	megax: function () {
-		let msgArr = [];
-		for(var i = 1, scramble = []; i < 78; i++) {
-			if(i !== 1 && i % 11 === 0) {
-				scramble[i - 2][2] === "-" ? scramble.push("U\'\n") : scramble.push("U\n");
-			} else if(i === 1 || scramble[i - 2][0] === "D" || scramble[i - 2][0] === "U") {
-				scramble.push(`R${Math.random() < 0.5 ? "++" : "--"}`);
-			} else {
-				scramble.push(`D${Math.random() < 0.5 ? "++" : "--"}`);
-			}
-		}
-		msgArr.push(`${scramble.join(" ").replace(/U\n R/g, "U\nR").replace(/U'\n R/g, "U\'\nR")}\n`);
-		return msgArr.join(" ");
+		return util_scramble.getMegaminxWCAScramble()
 	},
 
 	pyrax: function () {
