@@ -1,5 +1,5 @@
-import {util_scramble} from "./src/ilovecstimer/utilscramble";
-import {scramble_444} from "./src/ilovecstimer/scramble_444";
+import {util_scramble} from "./src/cstimerlib/utilscramble";
+import {scramble_444} from "./src/cstimerlib/scramble_444";
 
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
