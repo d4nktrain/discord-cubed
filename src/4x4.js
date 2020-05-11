@@ -1,4 +1,4 @@
-import {scramble_444} from "./ilovecstimer/scramble_444";
+import {scramble_444} from "./cstimerlib/scramble_444";
 
 module.exports.run = async (bot, message, args, cube) => {
 	let msgArr = [];

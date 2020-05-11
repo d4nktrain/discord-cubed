@@ -1,4 +1,4 @@
-import {util_scramble} from "./ilovecstimer/utilscramble";
+import {util_scramble} from "./cstimerlib/utilscramble";
 
 module.exports.run = async (bot, message, args, cube) => {
 	let scrambles = parseInt(args[0]);

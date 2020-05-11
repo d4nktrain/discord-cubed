@@ -1,5 +1,5 @@
 //*sigh* lets get this over with
-import {megaScrambler} from "./ilovecstimer/megascramble"
+import {megaScrambler} from "./cstimerlib/megascramble"
 
 module.exports.run = async (bot, message, args, cube) => {
     let msgArr = []

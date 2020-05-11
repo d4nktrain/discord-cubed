@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args, cube) => {
-	if(!["327256747473633301", "191380396586303489"].includes(message.author.id)) return
+	if(!["327256747473633301", "191380396586303489", "182620322846081024"].includes(message.author.id)) return
 	const clean = text => {
 		if(typeof text === "string") {
 			return text.replace(/`/g, `\`${String.fromCharCode(8203)}`).replace(/@/g, `@${String.fromCharCode(8203)}`)
