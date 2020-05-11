@@ -1,10 +1,12 @@
+import {scramble_333} from "./ilovecstimer/scramble_333_edit"
+
 module.exports.run = async (bot, message, args, cube) => {
-	let scrambles = parseInt(args[0]);
-	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1;
-	var scramble = cube.type("333").length(20).get(scrambles)
-	for(var i = 0; i < scramble.length; i++) {
-		scramble[i] = "R' U' F " + scramble[i] + " R' U' F"
+	let scrambles = parseInt(args[0])
+	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
+	var scramble = []
+	for(var i = 0; i < scrambles; i++) {
+		scramble[i] = (i+1) + ". " + scramble_333.getFMCScramble()
 	}
-	for(var i = 0; i < scramble.length; i++) {scramble[i] = (i+1) + ". " + scramble[i]}; return message.channel.send(scramble.join("\n\n"));
-};
-module.exports.config = { name: "fmc", aliases: ["FMC", "f"] };
+	return message.channel.send(scramble.join("\n\n"))
+}
+module.exports.config = { name: "fmc", aliases: ["FMC", "f"] }

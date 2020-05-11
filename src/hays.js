@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs")
 
 module.exports.run = async (bot, message, args, cube) => {
 	message.channel.send({
@@ -6,6 +6,6 @@ module.exports.run = async (bot, message, args, cube) => {
 			attachment: "./src/gifs/hays.gif",
 			name: "hays.gif"
 		}]
-	});
-};
-module.exports.config = { name: "hays", aliases: [] };
+	})
+}
+module.exports.config = { name: "hays", aliases: [] }

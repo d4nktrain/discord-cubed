@@ -16,8 +16,8 @@ module.exports.run = async (bot, message, args) => {
                 i++;
             }
         }
-        msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
+        msgArr.push((i+1) + ". " + scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
     }
-    for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
+    return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "8x8", aliases: ["8x8x8", "8"] };

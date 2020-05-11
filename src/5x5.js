@@ -16,8 +16,8 @@ module.exports.run = async (bot, message, args, cube) => {
 				i++;
 			}
 		}
-		msgArr.push(scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
+		msgArr.push((i+1) + ". " + scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
 	}
-	for(var i = 0; i < msgArr.length; i++) {msgArr[i] = (i+1) + ". " + msgArr[i]}; return message.channel.send(msgArr.join("\n\n"));
+	return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "5x5", aliases: ["5x5x5", "isthata10x10", "5-bld", "5BLD", "5-BLD", "5"] };

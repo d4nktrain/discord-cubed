@@ -12,17 +12,17 @@ module.exports.run = async (bot, message, args, cube) => {
         var rotation3 = randomElement(["y", "y2", "y'"])
         var whatRotation = Math.floor(Math.random()*5)
         if(whatRotation == 0) {
-		    scramble[i] = scramble[i] + " " + rotation1 + " " + rotation3
+		    scramble[i] = (i+1) + ". " + scramble[i] + " " + rotation1 + " " + rotation3
         } else if(whatRotation == 1) {
-		    scramble[i] = scramble[i] + " " + rotation2 + " " + rotation3
+		    scramble[i] = (i+1) + ". " + scramble[i] + " " + rotation2 + " " + rotation3
         } else if(whatRotation == 2) {
-		    scramble[i] = scramble[i] + " " + rotation1
+		    scramble[i] = (i+1) + ". " + scramble[i] + " " + rotation1
         } else if(whatRotation == 3) {
-		    scramble[i] = scramble[i] + " " + rotation2
+		    scramble[i] = (i+1) + ". " + scramble[i] + " " + rotation2
         } else if(whatRotation == 4) {
-		    scramble[i] = scramble[i] + " " + rotation3
+		    scramble[i] = (i+1) + ". " + scramble[i] + " " + rotation3
         }
     }
-	for(var i = 0; i < scramble.length; i++) {scramble[i] = (i+1) + ". " + scramble[i]}; return message.channel.send(scramble.join("\n\n"));
+	return message.channel.send(scramble.join("\n\n"));
 };
 module.exports.config = { name: "2-bld", aliases: ["2-BLD", "2bld"]};
