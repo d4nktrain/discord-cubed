@@ -4,7 +4,7 @@ const fs = require('fs')
 module.exports.run = async (bot, message, args) => {
     if(!args[0] || args[0] == "help") {
 		return message.channel.send(new Discord.RichEmbed()
-			.setTitle("Send suggestions to TheUPSTruck")
+			.setTitle("Send suggestions to danktrain")
 			.setColor("RANDOM")
 			.setDescription("Usage: \`s!suggest <suggestion>\`"))
     }

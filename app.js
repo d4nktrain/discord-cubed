@@ -159,7 +159,7 @@ bot.on("message", async message => {
 				await cmd.run(bot, message, args, cube);
 			} catch(error) {
 				console.log(error.stack);
-				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to TheUPSTruck#0001 or in the official Scrambler Discord server. Do \`s!info\` for a link.`);
+				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to danktrain#0001 or in the official Scrambler Discord server. Do \`s!info\` for a link.`);
 			}
 			return;
 		}
@@ -195,7 +195,7 @@ bot.on("message", async message => {
 				await cmd.run(bot, message, args, cube);
 			} catch(error) {
 				console.log(error.stack);
-				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to TheUPSTruck#0001 or in the official Scrambler (UPS) Discord server. Do \`s!info\` for a link.`);
+				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to danktrain#0001 or in the official Scrambler (UPS) Discord server. Do \`s!info\` for a link.`);
 			}
 		}
 	}
