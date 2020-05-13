@@ -192,37 +192,7 @@ bot.on("message", async message => {
 				return message.channel.send("Bot is currently updating, should be back in 20 seconds or less.")
 			}
 			try {
-				if(cmd === bot.commands.get("4x4")) {
-					if(!(args[0] === undefined)) {
-						if(!isNaN(args[0])) {
-							let scrambles = parseInt(args[0])
-							scrambles = scrambles ? scrambles > 10 ? 10 : scrambles < 0 ? 1 : scrambles : 1
-							for (var x = 0; x < scrambles; x++) {
-								await cmd.run(bot, message, x + 1);
-							}
-						} else {
-							await cmd.run(bot, message, 1);
-						}
-					} else {
-						await cmd.run(bot, message, 1);
-					}
-				} else if(cmd === bot.commands.get("3x3")) {
-					if(!(args[0] === undefined)) {
-						if(!isNaN(args[0])) {
-							let scrambles = parseInt(args[0])
-							scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
-							for (var x = 0; x < scrambles; x++) {
-								await cmd.run(bot, message, x+1);
-							}
-						} else {
-							await cmd.run(bot, message, 1);
-						}
-					} else {
-						await cmd.run(bot, message, 1);
-					}
-				} else {
-					await cmd.run(bot, message, args, cube);
-				}
+				await cmd.run(bot, message, args, cube);
 			} catch(error) {
 				console.log(error.stack);
 				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to danktrain#0001 or in the official Scrambler (UPS) Discord server. Do \`s!info\` for a link.`);
