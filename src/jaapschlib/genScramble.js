@@ -2,11 +2,8 @@
 //Modified by danktrain#0001 for use with scrambler
 
 // Default settings
-var size=3;
-var seqlen=30;
-var numcub=1;
+var size=2;
 var mult=false;
-var cubeorient=false;
 var colorString = "yobwrg";  //In dlburf order. May use any colours in colorList below
 
 // list of available colours
@@ -22,7 +19,6 @@ var colorList=new Array(
 );
 
 var colors=new Array(); //stores colours used
-var seq=new Array(); // move sequences
 var posit = new Array();   // facelet array
 var flat2posit;   //lookup table for drawing cube
 var colorPerm = new Array(); //dlburf
@@ -50,6 +46,125 @@ colorPerm[20] = new Array(5,0,4,2,3,1);
 colorPerm[21] = new Array(5,1,0,2,4,3);
 colorPerm[22] = new Array(5,3,1,2,0,4);
 colorPerm[23] = new Array(5,4,3,2,1,0);
+
+var setSize = function setSize(inputSize) {
+    size = inputSize
+}
+
+var jaapschSeq = function jaapschSeq(scramble, inputSize) {
+    scramble = scramble.split(" ")
+
+    var D = 0
+    var D2 = 1
+    var DP = 2
+    var L = 4
+    var L2 = 5
+    var LP = 6
+    var B = 8
+    var B2 = 9
+    var BP = 10
+    var U = 12
+    var U2 = 13
+    var UP = 14
+    var R = 16
+    var R2 = 17
+    var RP = 18
+    var F = 20
+    var F2 = 21
+    var FP = 22
+
+    for(let i = 0; i < scramble.length; i++) {
+        if(scramble[i] === "D") scramble[i] = D
+        if(scramble[i] === "D2") scramble[i] = D2
+        if(scramble[i] === "D'") scramble[i] = DP
+        if(scramble[i] === "L") scramble[i] = L
+        if(scramble[i] === "L2") scramble[i] = L2
+        if(scramble[i] === "L'") scramble[i] = LP
+        if(scramble[i] === "B") scramble[i] = B
+        if(scramble[i] === "B2") scramble[i] = B2
+        if(scramble[i] === "B'") scramble[i] = BP
+        if(scramble[i] === "U") scramble[i] = U
+        if(scramble[i] === "U2") scramble[i] = U2
+        if(scramble[i] === "U'") scramble[i] = UP
+        if(scramble[i] === "R") scramble[i] = R
+        if(scramble[i] === "R2") scramble[i] = R2
+        if(scramble[i] === "R'") scramble[i] = RP
+        if(scramble[i] === "F") scramble[i] = F
+        if(scramble[i] === "F2") scramble[i] = F2
+        if(scramble[i] === "F'") scramble[i] = FP
+
+        if(inputSize > 3) {
+            if(scramble[i] === "Dw") scramble[i] = `${D+24} ${D}`
+            if(scramble[i] === "Dw2") scramble[i] = `${D2+24} ${D2}`
+            if(scramble[i] === "Dw'") scramble[i] = `${DP+24} ${DP}`
+            if(scramble[i] === "Lw") scramble[i] = `${L+24} ${L}`
+            if(scramble[i] === "Lw2") scramble[i] = `${L+24} ${L2}`
+            if(scramble[i] === "Lw'") scramble[i] = `${LP+24} ${LP}`
+            if(scramble[i] === "Bw") scramble[i] = `${B+24} ${B}`
+            if(scramble[i] === "Bw2") scramble[i] = `${B2+24} ${B2}`
+            if(scramble[i] === "Bw'") scramble[i] = `${BP+24} ${BP}`
+            if(scramble[i] === "Uw") scramble[i] = `${U+24} ${U}`
+            if(scramble[i] === "Uw2") scramble[i] = `${U2+24} ${U2}`
+            if(scramble[i] === "Uw'") scramble[i] = `${UP+24} ${UP}`
+            if(scramble[i] === "Rw") scramble[i] = `${R+24} ${R}`
+            if(scramble[i] === "Rw2") scramble[i] = `${R2+24} ${R2}`
+            if(scramble[i] === "Rw'") scramble[i] = `${RP+24} ${RP}`
+            if(scramble[i] === "Fw") scramble[i] = `${F+24} ${F}`
+            if(scramble[i] === "Fw2") scramble[i] = `${F2} ${F2}`
+            if(scramble[i] === "Fw'") scramble[i] = `${FP+24} ${FP}`
+
+            if(inputSize > 5) {
+                if(scramble[i] === "3Dw") scramble[i] = `${D+24+24} ${D+24} ${D}`
+                if(scramble[i] === "3Dw2") scramble[i] = `${D2+24+24} ${D2+24} ${D2}`
+                if(scramble[i] === "3Dw'") scramble[i] = `${DP+24+24} ${DP+24} ${DP}`
+                if(scramble[i] === "3Lw") scramble[i] = `${L+24+24} ${L+24} ${L}`
+                if(scramble[i] === "3Lw2") scramble[i] = `${L2+24+24} ${L2+24} ${L2}`
+                if(scramble[i] === "3Lw'") scramble[i] = `${LP+24+24} ${LP+24} ${LP}`
+                if(scramble[i] === "3Bw") scramble[i] = `${B+24+24} ${B+24} ${B}`
+                if(scramble[i] === "3Bw2") scramble[i] = `${B2+24+24} ${B2+24} ${B2}`
+                if(scramble[i] === "3Bw'") scramble[i] = `${BP+24+24} ${BP+24} ${BP}`
+                if(scramble[i] === "3Uw") scramble[i] = `${U+24+24} ${U+24} ${U}`
+                if(scramble[i] === "3Uw2") scramble[i] = `${U2+24+24} ${U2+24} ${U2}`
+                if(scramble[i] === "3Uw'") scramble[i] = `${UP+24+24} ${UP+24} ${UP}`
+                if(scramble[i] === "3Rw") scramble[i] = `${R+24+24} ${R+24} ${R}`
+                if(scramble[i] === "3Rw2") scramble[i] = `${R2+24+24} ${R2+24} ${R2}`
+                if(scramble[i] === "3Rw'") scramble[i] = `${RP+24+24} ${RP+24} ${RP}`
+                if(scramble[i] === "3Fw") scramble[i] = `${F+24+24} ${F+24} ${F}`
+                if(scramble[i] === "3Fw2") scramble[i] = `${F2+24+24} ${F2+24} ${F2}`
+                if(scramble[i] === "3Fw'") scramble[i] = `${FP+24+24} ${FP+24} ${FP}`
+
+                if(inputSize > 7) {
+                    if(scramble[i] === "4Dw") scramble[i] = `${D+24+24+24} ${D+24+24} ${D+24} ${D}`
+                    if(scramble[i] === "4Dw2") scramble[i] = `${D2+24+24+24} ${D2+24+24} ${D2+24} ${D2}`
+                    if(scramble[i] === "4Dw'") scramble[i] = `${DP+24+24+24} ${DP+24+24} ${DP+24} ${DP}`
+                    if(scramble[i] === "4Lw") scramble[i] = `${L+24+24+24} ${L+24+24} ${L+24} ${L}`
+                    if(scramble[i] === "4Lw2") scramble[i] = `${L2+24+24+24} ${L2+24+24} ${L2+24} ${L2}`
+                    if(scramble[i] === "4Lw'") scramble[i] = `${LP+24+24+24} ${LP+24+24} ${LP+24} ${LP}`
+                    if(scramble[i] === "4Bw") scramble[i] = `${B+24+24+24} ${B+24+24} ${B+24} ${B}`
+                    if(scramble[i] === "4Bw2") scramble[i] = `${B2+24+24+24} ${B2+24+24} ${B2+24} ${B2}`
+                    if(scramble[i] === "4Bw'") scramble[i] = `${BP+24+24+24} ${BP+24+24} ${BP+24} ${BP}`
+                    if(scramble[i] === "4Uw") scramble[i] = `${U+24+24+24} ${U+24+24} ${U+24} ${U}`
+                    if(scramble[i] === "4Uw2") scramble[i] = `${U2+24+24+24} ${U2+24+24} ${U2+24} ${U2}`
+                    if(scramble[i] === "4Uw'") scramble[i] = `${UP+24+24+24} ${UP+24+24} ${UP+24} ${UP}`
+                    if(scramble[i] === "4Rw") scramble[i] = `${R+24+24+24} ${R+24+24} ${R+24} ${R}`
+                    if(scramble[i] === "4Rw2") scramble[i] = `${R2+24+24+24} ${R2+24+24} ${R2+24} ${R2}`
+                    if(scramble[i] === "4Rw'") scramble[i] = `${RP+24+24+24} ${RP+24+24} ${RP+24} ${RP}`
+                    if(scramble[i] === "4Fw") scramble[i] = `${F+24+24+24} ${F+24+24} ${F+24} ${F}`
+                    if(scramble[i] === "4Fw2") scramble[i] = `${F2+24+24+24} ${F2+24+24} ${F2+24} ${F2}`
+                    if(scramble[i] === "4Fw'") scramble[i] = `${FP+24+24+24} ${FP+24+24} ${FP+24} ${FP}`
+                }
+            }
+        }
+    }
+
+    if(scramble[scramble.length-1] === "") {
+        scramble[scramble.length-1] = 0
+    } else {
+        scramble.push("0")
+    }
+
+    return scramble.join(" ").split(" ")
+}
 
 function parse() {
     // var s="";
@@ -261,10 +376,10 @@ parse();
 //     return(s);
 // }
 
-var getEmojiArray = function getEmojiArray(input) {
+var imagestring = function imagestring(input) {
 
-    // build lookup table
-    flat2posit = new Array(12*size*size);
+    //build lookup table
+    flat2posit=new Array(12*size*size);
     for(i=0; i<flat2posit.length; i++) flat2posit[i]=-1;
     for(i=0; i<size; i++){
         for(var j=0; j<size; j++){
@@ -298,35 +413,91 @@ var getEmojiArray = function getEmojiArray(input) {
 
     // build string containing cube
     var ori = input[input.length-1];
-    // console.log(ori)
     d=0;
-    // s="<table border=1 cellpadding=0 cellspacing=0>";
+    s="<table border=1 cellpadding=0 cellspacing=0 rules=none>";
     for(i=0;i<3*size;i++){
-        // s+="<tr>";
+        s+="<tr>";
         for(f=0;f<4*size;f++){
             if(flat2posit[d]<0){
-                // s+="<td><\/td>";
+                s+="<td bgcolor="+"#C0C0C0"+"><img src='images/blank.gif' width=10 height=10><\/td>";
             }else{
                 var c = colorPerm[ori][posit[flat2posit[d]]];
-                s+=colorList[colors[c]+1].replace("#ff8000", "orange") + "\n"
+                s+="<td bgcolor="+colorList[colors[c]+1]+"><img src='images/blank.gif' width=10 height=10><\/td>";
             }
             d++;
         }
-        // s+="<\/tr>";
+        s+="<\/tr>";
     }
-    // s+="<\/table>";
-    s = s.split("\n")
-    s.pop()
-    for(var i = 0; i < s.length; i++) {
-        if(s[i] === "red") s[i] = ":red_square:"
-        if(s[i] === "orange") s[i] = ":orange_square:"
-        if(s[i] === "yellow") s[i] = ":yellow_square:"
-        if(s[i] === "white") s[i] = ":white_large_square:"
-        if(s[i] === "blue") s[i] = ":blue_square:"
-        if(s[i] === "green") s[i] = ":green_square:"
-    }
+    s+="<\/table>";
     return(s);
 }
+
+// var getEmojiArray = function getEmojiArray(input) {
+//
+//     // build lookup table
+//     flat2posit = new Array(12*size*size);
+//     for(i=0; i<flat2posit.length; i++) flat2posit[i]=-1;
+//     for(i=0; i<size; i++){
+//         for(var j=0; j<size; j++){
+//             flat2posit[4*size*(3*size-i-1)+  size+j  ]=        i *size+j;  //D
+//             flat2posit[4*size*(  size+i  )+  size-j-1]=(  size+i)*size+j;  //L
+//             flat2posit[4*size*(  size+i  )+4*size-j-1]=(2*size+i)*size+j;  //B
+//             flat2posit[4*size*(       i  )+  size+j  ]=(3*size+i)*size+j;  //U
+//             flat2posit[4*size*(  size+i  )+2*size+j  ]=(4*size+i)*size+j;  //R
+//             flat2posit[4*size*(  size+i  )+  size+j  ]=(5*size+i)*size+j;  //F
+//         }
+//     }
+//
+//     var s="",i,f,d=0,q;
+//
+//     // initialise colours
+//     for( i=0; i<6; i++)
+//         for( f=0; f<size*size; f++)
+//             posit[d++]=i;
+//
+//     // do move sequence
+//     for(i=0; i<input.length-1; i++){
+//         q=input[i]&3;
+//         f=input[i]>>2;
+//         d=0;
+//         while(f>5) { f-=6; d++; }
+//         do{
+//             doslice(f,d,q+1);
+//             d--;
+//         }while( mult && d>=0 );
+//     }
+//
+//     // build string containing cube
+//     var ori = input[input.length-1];
+//     // console.log(ori)
+//     d=0;
+//     // s="<table border=1 cellpadding=0 cellspacing=0>";
+//     for(i=0;i<3*size;i++){
+//         // s+="<tr>";
+//         for(f=0;f<4*size;f++){
+//             if(flat2posit[d]<0){
+//                 // s+="<td><\/td>";
+//             }else{
+//                 var c = colorPerm[ori][posit[flat2posit[d]]];
+//                 s+=colorList[colors[c]+1].replace("#ff8000", "orange") + "\n"
+//             }
+//             d++;
+//         }
+//         // s+="<\/tr>";
+//     }
+//     // s+="<\/table>";
+//     s = s.split("\n")
+//     s.pop()
+//     for(var i = 0; i < s.length; i++) {
+//         if(s[i] === "red") s[i] = ":red_square:"
+//         if(s[i] === "orange") s[i] = ":orange_square:"
+//         if(s[i] === "yellow") s[i] = ":yellow_square:"
+//         if(s[i] === "white") s[i] = ":white_large_square:"
+//         if(s[i] === "blue") s[i] = ":blue_square:"
+//         if(s[i] === "green") s[i] = ":green_square:"
+//     }
+//     return(s);
+// }
 
 function doslice(f,d,q){
     //do move of face f, layer d, q quarter turns
@@ -445,4 +616,4 @@ function doslice(f,d,q){
 //     document.frm.subbutton.focus();
 // }
 
-export{getEmojiArray}
+export{imagestring, setSize, jaapschSeq}
