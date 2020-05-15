@@ -124,7 +124,7 @@ module.exports = {
 	},
 
 	megax: function () {
-		return util_scramble.getMegaminxWCAScramble()
+		return util_scramble.getMegaminxWCAScramble(70)
 	},
 
 	pyrax: function () {
