@@ -53,6 +53,7 @@ var setSize = function setSize(inputSize) {
 
 var jaapschSeq = function jaapschSeq(scramble, inputSize) {
     scramble = scramble.split(" ")
+    let sequence = []
 
     var D = 0
     var D2 = 1
@@ -74,97 +75,93 @@ var jaapschSeq = function jaapschSeq(scramble, inputSize) {
     var FP = 22
 
     for(let i = 0; i < scramble.length; i++) {
-        if(scramble[i] === "D") scramble[i] = D
-        if(scramble[i] === "D2") scramble[i] = D2
-        if(scramble[i] === "D'") scramble[i] = DP
-        if(scramble[i] === "L") scramble[i] = L
-        if(scramble[i] === "L2") scramble[i] = L2
-        if(scramble[i] === "L'") scramble[i] = LP
-        if(scramble[i] === "B") scramble[i] = B
-        if(scramble[i] === "B2") scramble[i] = B2
-        if(scramble[i] === "B'") scramble[i] = BP
-        if(scramble[i] === "U") scramble[i] = U
-        if(scramble[i] === "U2") scramble[i] = U2
-        if(scramble[i] === "U'") scramble[i] = UP
-        if(scramble[i] === "R") scramble[i] = R
-        if(scramble[i] === "R2") scramble[i] = R2
-        if(scramble[i] === "R'") scramble[i] = RP
-        if(scramble[i] === "F") scramble[i] = F
-        if(scramble[i] === "F2") scramble[i] = F2
-        if(scramble[i] === "F'") scramble[i] = FP
+        if(scramble[i] === "D") sequence[i] = D
+        if(scramble[i] === "D2") sequence[i] = D2
+        if(scramble[i] === "D'") sequence[i] = DP
+        if(scramble[i] === "L") sequence[i] = L
+        if(scramble[i] === "L2") sequence[i] = L2
+        if(scramble[i] === "L'") sequence[i] = LP
+        if(scramble[i] === "B") sequence[i] = B
+        if(scramble[i] === "B2") sequence[i] = B2
+        if(scramble[i] === "B'") sequence[i] = BP
+        if(scramble[i] === "U") sequence[i] = U
+        if(scramble[i] === "U2") sequence[i] = U2
+        if(scramble[i] === "U'") sequence[i] = UP
+        if(scramble[i] === "R") sequence[i] = R
+        if(scramble[i] === "R2") sequence[i] = R2
+        if(scramble[i] === "R'") sequence[i] = RP
+        if(scramble[i] === "F") sequence[i] = F
+        if(scramble[i] === "F2") sequence[i] = F2
+        if(scramble[i] === "F'") sequence[i] = FP
 
         if(inputSize > 3) {
-            if(scramble[i] === "Dw") scramble[i] = `${D+24} ${D}`
-            if(scramble[i] === "Dw2") scramble[i] = `${D2+24} ${D2}`
-            if(scramble[i] === "Dw'") scramble[i] = `${DP+24} ${DP}`
-            if(scramble[i] === "Lw") scramble[i] = `${L+24} ${L}`
-            if(scramble[i] === "Lw2") scramble[i] = `${L+24} ${L2}`
-            if(scramble[i] === "Lw'") scramble[i] = `${LP+24} ${LP}`
-            if(scramble[i] === "Bw") scramble[i] = `${B+24} ${B}`
-            if(scramble[i] === "Bw2") scramble[i] = `${B2+24} ${B2}`
-            if(scramble[i] === "Bw'") scramble[i] = `${BP+24} ${BP}`
-            if(scramble[i] === "Uw") scramble[i] = `${U+24} ${U}`
-            if(scramble[i] === "Uw2") scramble[i] = `${U2+24} ${U2}`
-            if(scramble[i] === "Uw'") scramble[i] = `${UP+24} ${UP}`
-            if(scramble[i] === "Rw") scramble[i] = `${R+24} ${R}`
-            if(scramble[i] === "Rw2") scramble[i] = `${R2+24} ${R2}`
-            if(scramble[i] === "Rw'") scramble[i] = `${RP+24} ${RP}`
-            if(scramble[i] === "Fw") scramble[i] = `${F+24} ${F}`
-            if(scramble[i] === "Fw2") scramble[i] = `${F2} ${F2}`
-            if(scramble[i] === "Fw'") scramble[i] = `${FP+24} ${FP}`
+            if(scramble[i] === "Dw") sequence[i] = `${D+24} ${D}`
+            if(scramble[i] === "Dw2") sequence[i] = `${D2+24} ${D2}`
+            if(scramble[i] === "Dw'") sequence[i] = `${DP+24} ${DP}`
+            if(scramble[i] === "Lw") sequence[i] = `${L+24} ${L}`
+            if(scramble[i] === "Lw2") sequence[i] = `${L+24} ${L2}`
+            if(scramble[i] === "Lw'") sequence[i] = `${LP+24} ${LP}`
+            if(scramble[i] === "Bw") sequence[i] = `${B+24} ${B}`
+            if(scramble[i] === "Bw2") sequence[i] = `${B2+24} ${B2}`
+            if(scramble[i] === "Bw'") sequence[i] = `${BP+24} ${BP}`
+            if(scramble[i] === "Uw") sequence[i] = `${U+24} ${U}`
+            if(scramble[i] === "Uw2") sequence[i] = `${U2+24} ${U2}`
+            if(scramble[i] === "Uw'") sequence[i] = `${UP+24} ${UP}`
+            if(scramble[i] === "Rw") sequence[i] = `${R+24} ${R}`
+            if(scramble[i] === "Rw2") sequence[i] = `${R2+24} ${R2}`
+            if(scramble[i] === "Rw'") sequence[i] = `${RP+24} ${RP}`
+            if(scramble[i] === "Fw") sequence[i] = `${F+24} ${F}`
+            if(scramble[i] === "Fw2") sequence[i] = `${F2+24} ${F2}`
+            if(scramble[i] === "Fw'") sequence[i] = `${FP+24} ${FP}`
 
             if(inputSize > 5) {
-                if(scramble[i] === "3Dw") scramble[i] = `${D+24+24} ${D+24} ${D}`
-                if(scramble[i] === "3Dw2") scramble[i] = `${D2+24+24} ${D2+24} ${D2}`
-                if(scramble[i] === "3Dw'") scramble[i] = `${DP+24+24} ${DP+24} ${DP}`
-                if(scramble[i] === "3Lw") scramble[i] = `${L+24+24} ${L+24} ${L}`
-                if(scramble[i] === "3Lw2") scramble[i] = `${L2+24+24} ${L2+24} ${L2}`
-                if(scramble[i] === "3Lw'") scramble[i] = `${LP+24+24} ${LP+24} ${LP}`
-                if(scramble[i] === "3Bw") scramble[i] = `${B+24+24} ${B+24} ${B}`
-                if(scramble[i] === "3Bw2") scramble[i] = `${B2+24+24} ${B2+24} ${B2}`
-                if(scramble[i] === "3Bw'") scramble[i] = `${BP+24+24} ${BP+24} ${BP}`
-                if(scramble[i] === "3Uw") scramble[i] = `${U+24+24} ${U+24} ${U}`
-                if(scramble[i] === "3Uw2") scramble[i] = `${U2+24+24} ${U2+24} ${U2}`
-                if(scramble[i] === "3Uw'") scramble[i] = `${UP+24+24} ${UP+24} ${UP}`
-                if(scramble[i] === "3Rw") scramble[i] = `${R+24+24} ${R+24} ${R}`
-                if(scramble[i] === "3Rw2") scramble[i] = `${R2+24+24} ${R2+24} ${R2}`
-                if(scramble[i] === "3Rw'") scramble[i] = `${RP+24+24} ${RP+24} ${RP}`
-                if(scramble[i] === "3Fw") scramble[i] = `${F+24+24} ${F+24} ${F}`
-                if(scramble[i] === "3Fw2") scramble[i] = `${F2+24+24} ${F2+24} ${F2}`
-                if(scramble[i] === "3Fw'") scramble[i] = `${FP+24+24} ${FP+24} ${FP}`
+                if(scramble[i] === "3Dw") sequence[i] = `${D+24+24} ${D+24} ${D}`
+                if(scramble[i] === "3Dw2") sequence[i] = `${D2+24+24} ${D2+24} ${D2}`
+                if(scramble[i] === "3Dw'") sequence[i] = `${DP+24+24} ${DP+24} ${DP}`
+                if(scramble[i] === "3Lw") sequence[i] = `${L+24+24} ${L+24} ${L}`
+                if(scramble[i] === "3Lw2") sequence[i] = `${L2+24+24} ${L2+24} ${L2}`
+                if(scramble[i] === "3Lw'") sequence[i] = `${LP+24+24} ${LP+24} ${LP}`
+                if(scramble[i] === "3Bw") sequence[i] = `${B+24+24} ${B+24} ${B}`
+                if(scramble[i] === "3Bw2") sequence[i] = `${B2+24+24} ${B2+24} ${B2}`
+                if(scramble[i] === "3Bw'") sequence[i] = `${BP+24+24} ${BP+24} ${BP}`
+                if(scramble[i] === "3Uw") sequence[i] = `${U+24+24} ${U+24} ${U}`
+                if(scramble[i] === "3Uw2") sequence[i] = `${U2+24+24} ${U2+24} ${U2}`
+                if(scramble[i] === "3Uw'") sequence[i] = `${UP+24+24} ${UP+24} ${UP}`
+                if(scramble[i] === "3Rw") sequence[i] = `${R+24+24} ${R+24} ${R}`
+                if(scramble[i] === "3Rw2") sequence[i] = `${R2+24+24} ${R2+24} ${R2}`
+                if(scramble[i] === "3Rw'") sequence[i] = `${RP+24+24} ${RP+24} ${RP}`
+                if(scramble[i] === "3Fw") sequence[i] = `${F+24+24} ${F+24} ${F}`
+                if(scramble[i] === "3Fw2") sequence[i] = `${F2+24+24} ${F2+24} ${F2}`
+                if(scramble[i] === "3Fw'") sequence[i] = `${FP+24+24} ${FP+24} ${FP}`
 
                 if(inputSize > 7) {
-                    if(scramble[i] === "4Dw") scramble[i] = `${D+24+24+24} ${D+24+24} ${D+24} ${D}`
-                    if(scramble[i] === "4Dw2") scramble[i] = `${D2+24+24+24} ${D2+24+24} ${D2+24} ${D2}`
-                    if(scramble[i] === "4Dw'") scramble[i] = `${DP+24+24+24} ${DP+24+24} ${DP+24} ${DP}`
-                    if(scramble[i] === "4Lw") scramble[i] = `${L+24+24+24} ${L+24+24} ${L+24} ${L}`
-                    if(scramble[i] === "4Lw2") scramble[i] = `${L2+24+24+24} ${L2+24+24} ${L2+24} ${L2}`
-                    if(scramble[i] === "4Lw'") scramble[i] = `${LP+24+24+24} ${LP+24+24} ${LP+24} ${LP}`
-                    if(scramble[i] === "4Bw") scramble[i] = `${B+24+24+24} ${B+24+24} ${B+24} ${B}`
-                    if(scramble[i] === "4Bw2") scramble[i] = `${B2+24+24+24} ${B2+24+24} ${B2+24} ${B2}`
-                    if(scramble[i] === "4Bw'") scramble[i] = `${BP+24+24+24} ${BP+24+24} ${BP+24} ${BP}`
-                    if(scramble[i] === "4Uw") scramble[i] = `${U+24+24+24} ${U+24+24} ${U+24} ${U}`
-                    if(scramble[i] === "4Uw2") scramble[i] = `${U2+24+24+24} ${U2+24+24} ${U2+24} ${U2}`
-                    if(scramble[i] === "4Uw'") scramble[i] = `${UP+24+24+24} ${UP+24+24} ${UP+24} ${UP}`
-                    if(scramble[i] === "4Rw") scramble[i] = `${R+24+24+24} ${R+24+24} ${R+24} ${R}`
-                    if(scramble[i] === "4Rw2") scramble[i] = `${R2+24+24+24} ${R2+24+24} ${R2+24} ${R2}`
-                    if(scramble[i] === "4Rw'") scramble[i] = `${RP+24+24+24} ${RP+24+24} ${RP+24} ${RP}`
-                    if(scramble[i] === "4Fw") scramble[i] = `${F+24+24+24} ${F+24+24} ${F+24} ${F}`
-                    if(scramble[i] === "4Fw2") scramble[i] = `${F2+24+24+24} ${F2+24+24} ${F2+24} ${F2}`
-                    if(scramble[i] === "4Fw'") scramble[i] = `${FP+24+24+24} ${FP+24+24} ${FP+24} ${FP}`
+                    if(scramble[i] === "4Dw") sequence[i] = `${D+24+24+24} ${D+24+24} ${D+24} ${D}`
+                    if(scramble[i] === "4Dw2") sequence[i] = `${D2+24+24+24} ${D2+24+24} ${D2+24} ${D2}`
+                    if(scramble[i] === "4Dw'") sequence[i] = `${DP+24+24+24} ${DP+24+24} ${DP+24} ${DP}`
+                    if(scramble[i] === "4Lw") sequence[i] = `${L+24+24+24} ${L+24+24} ${L+24} ${L}`
+                    if(scramble[i] === "4Lw2") sequence[i] = `${L2+24+24+24} ${L2+24+24} ${L2+24} ${L2}`
+                    if(scramble[i] === "4Lw'") sequence[i] = `${LP+24+24+24} ${LP+24+24} ${LP+24} ${LP}`
+                    if(scramble[i] === "4Bw") sequence[i] = `${B+24+24+24} ${B+24+24} ${B+24} ${B}`
+                    if(scramble[i] === "4Bw2") sequence[i] = `${B2+24+24+24} ${B2+24+24} ${B2+24} ${B2}`
+                    if(scramble[i] === "4Bw'") sequence[i] = `${BP+24+24+24} ${BP+24+24} ${BP+24} ${BP}`
+                    if(scramble[i] === "4Uw") sequence[i] = `${U+24+24+24} ${U+24+24} ${U+24} ${U}`
+                    if(scramble[i] === "4Uw2") sequence[i] = `${U2+24+24+24} ${U2+24+24} ${U2+24} ${U2}`
+                    if(scramble[i] === "4Uw'") sequence[i] = `${UP+24+24+24} ${UP+24+24} ${UP+24} ${UP}`
+                    if(scramble[i] === "4Rw") sequence[i] = `${R+24+24+24} ${R+24+24} ${R+24} ${R}`
+                    if(scramble[i] === "4Rw2") sequence[i] = `${R2+24+24+24} ${R2+24+24} ${R2+24} ${R2}`
+                    if(scramble[i] === "4Rw'") sequence[i] = `${RP+24+24+24} ${RP+24+24} ${RP+24} ${RP}`
+                    if(scramble[i] === "4Fw") sequence[i] = `${F+24+24+24} ${F+24+24} ${F+24} ${F}`
+                    if(scramble[i] === "4Fw2") sequence[i] = `${F2+24+24+24} ${F2+24+24} ${F2+24} ${F2}`
+                    if(scramble[i] === "4Fw'") sequence[i] = `${FP+24+24+24} ${FP+24+24} ${FP+24} ${FP}`
                 }
             }
         }
     }
 
-    if(scramble[scramble.length-1] === "") {
-        scramble[scramble.length-1] = 0
-    } else {
-        scramble.push("0")
-    }
+    sequence.push("0")
 
-    console.log(scramble.join(" ").split(" "))
-    return scramble.join(" ").split(" ")
+    console.log(sequence.join(" ").split(" "))
+    return sequence.join(" ").split(" ")
 }
 
 function parse() {
