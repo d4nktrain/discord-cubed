@@ -97,8 +97,12 @@ var scramble_333 = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl
         }
     }
 
+    function noop() {
+
+    }
+
     function initMove() {
-        initMove = $.noop;
+        initMove = noop
         var a, p;
         moveCube[0] = new CubieCube1(15120, 0, 119750400, 0);
         moveCube[3] = new CubieCube1(21021, 1494, 323403417, 0);
@@ -679,6 +683,7 @@ var scramble_333 = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl
     return {
         /* mark2 interface */
         getRandomScramble: getRandomScramble, //getRandomScramble,
+        getFMCScramble: getFMCScramble,
         //
         // /* added methods */
         // getEdgeScramble: getEdgeScramble,
