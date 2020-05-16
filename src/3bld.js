@@ -1,3 +1,5 @@
+import {scramble_333} from "./lib/scramble_333_edit";
+
 function randomElement(arr) {
     return arr[Math.floor(Math.random()*arr.length)]
 }
@@ -5,7 +7,10 @@ function randomElement(arr) {
 module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0])
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
-	var scramble = cube.type("333").length(20).get(scrambles)
+	let scramble = []
+    for(let n = 0; n < scrambles; n++) {
+        scramble[n] = scramble_333.getRandomScramble()
+    }
 	for(var i = 0; i < scramble.length; i++) {
 		var rotation1 = randomElement(["Rw", "Rw2", "Rw'"])
         var rotation2 = randomElement(["Fw", "Fw2", "Fw'"])
