@@ -1,7 +1,7 @@
-import {util_scramble} from "./src/cstimerlib/utilscramble";
-import {scramble_444} from "./src/cstimerlib/scramble_444";
-import {megaScrambler} from "./src/cstimerlib/megascramble";
-import {scramble_333} from "./src/cstimerlib/scramble_333_edit";
+import {util_scramble} from "./src/lib/utilscramble";
+import {scramble_444} from "./src/lib/scramble_444";
+import {megaScrambler} from "./src/lib/megascramble";
+import {scramble_333} from "./src/lib/scramble_333_edit";
 
 const Scrambo = require("scrambo");
 const cube = new Scrambo();

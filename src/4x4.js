@@ -1,5 +1,5 @@
-import {scramble_444} from "./cstimerlib/scramble_444";
-import {imagestring, jaapschSeq, setSize} from "./jaapschlib/genScramble";
+import {scramble_444} from "./lib/scramble_444";
+import {imagestring, jaapschSeq, setSize} from "./lib/genScramble";
 
 var nodeHtmlToImage = require('node-html-to-image')
 var Jimp = require('jimp')

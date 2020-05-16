@@ -1,5 +1,5 @@
 /* Javascript written by Jaap Scherphuis,  jaapsch a t yahoo d o t com */
-//Modified by danktrain#0001 for use with scrambler
+//FROM JAAPSCH, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 
 // Default settings
 var size=2;
@@ -163,6 +163,7 @@ var jaapschSeq = function jaapschSeq(scramble, inputSize) {
         scramble.push("0")
     }
 
+    console.log(scramble.join(" ").split(" "))
     return scramble.join(" ").split(" ")
 }
 

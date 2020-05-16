@@ -1,3 +1,4 @@
+//FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 import {scrambleCS} from "./scrambleCS"
 import {mathlib} from "./mathlib"
 
@@ -5,14 +6,16 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	var cubesuff=["","2","'"];
 	var minxsuff=["","2","'","2'"];
 	var args = {
+		"lettuce": [[["cut"], ["rinse"], ["rip"]],cubesuff], //lettuce
 		"111": [[["x"],["y"],["z"]],cubesuff], // 1x1x1
 		"2223": [[["U"],["R"],["F"]],cubesuff], // 2x2x2 (3-gen)
 		"2226": [[[["U","D"]],[["R","L"]],[["F","B"]]],cubesuff], // 2x2x2 (6-gen)
 		"333o": [[["U","D"],["R","L"],["F","B"]],cubesuff], // 3x3x3 (old style)
+		"333double": [[["U2","D2"],["R2","L2"],["F2","B2"]],cubesuff], //request for scrambler to have an option for double moves
 		"334": [[[["U","U'","U2"],["u","u'","u2"]],[["R2","L2","M2"]],[["F2","B2","S2"]]]], // 3x3x4
 		"336": [[[["U","U'","U2"],["u","u'","u2"],["3u","3u2","3u'"]],[["R2","L2","M2"]],[["F2","B2","S2"]]]], // 3x3x6
-		"888": [[["U","D","u","d","3u","3d","4u"],["R","L","r","l","3r","3l","4r"],["F","B","f","b","3f","3b","4f"]],cubesuff], // 8x8x8 (SiGN)
-		"999": [[["U","D","u","d","3u","3d","4u","4d"],["R","L","r","l","3r","3l","4r","4l"],["F","B","f","b","3f","3b","4f","4b"]],cubesuff], // 9x9x9 (SiGN)
+		"888": [[["U","D","Uw","Dw","3Uw","3Dw","4Uw"],["R","L","Rw","Lw","3Rw","3Lw","4Rw"],["F","B","Fw","Bw","3Fw","3Bw","4Fw"]],cubesuff], //8x8x8 with the notation I like to use with scrambler(wca-type)
+		"999": [[["U","D","Uw","Dw","3Uw","3Dw","4Uw","4Dw"],["R","L","Rw","Lw","3Rw","3Lw","4Rw","4Lw"],["F","B","Fw","Bw","3Fw","3Bw","4Fw","4Bw"]],cubesuff], //9x9x9 with the notation I like to use with scrambler(wca-type)
 		"101010": [[["U","D","u","d","3u","3d","4u","4d","5u"],["R","L","r","l","3r","3l","4r","4l","5r"],["F","B","f","b","3f","3b","4f","4b","5f"]],cubesuff], // 10x10x10 (SiGN)
 		"111111": [[["U","D","u","d","3u","3d","4u","4d","5u","5d"],["R","L","r","l","3r","3l","4r","4l","5r","5l"],["F","B","f","b","3f","3b","4f","4b","5f","5b"]],cubesuff], // 11x11x11 (SiGN)
 		"444": [[["U","D","u"],["R","L","r"],["F","B","f"]],cubesuff], // 4x4x4 (SiGN)
@@ -210,6 +213,10 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	  	return megascramble("2genl", 25);
 	  }
 
+	  function getLettuceRecipe() {
+		return megascramble("lettuce", 20)
+	  }
+
 	  function get333_2genMU_scramble(){
 	  	return megascramble("roux", 25);
 	  }
@@ -236,6 +243,10 @@ var megaScrambler = (function(mega, rn, rndEl) {
 
 	  function get332scramble(){
 	  	return megascramble("233", 25);
+	  }
+
+	  function get333DoubleMoveScramble() {
+	  	return megascramble("333double", 20);
 	  }
 
 	  function get334scramble(){
@@ -283,46 +294,48 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	  }
 
 	  return {
-	    get444WCAScramble: get444WCAScramble,
-	    get444SiGNScramble: get444SiGNScramble,
-	    get444edgesScramble: get444edgesScramble,
+		  get444WCAScramble: get444WCAScramble,
+		  get444SiGNScramble: get444SiGNScramble,
+		  get444edgesScramble: get444edgesScramble,
 
-	    get555WCAScramble: get555WCAScramble,
-	    get555SiGNScramble: get555SiGNScramble,
-	    get555edgesScramble: get555edgesScramble,
+		  get555WCAScramble: get555WCAScramble,
+		  get555SiGNScramble: get555SiGNScramble,
+		  get555edgesScramble: get555edgesScramble,
 
-	    get666WCAScramble: get666WCAScramble,
-	    get666SiGNScramble: get666SiGNScramble,
-	    get666edgesScramble: get666edgesScramble,
+		  get666WCAScramble: get666WCAScramble,
+		  get666SiGNScramble: get666SiGNScramble,
+		  get666edgesScramble: get666edgesScramble,
 
-	    get777WCAScramble: get777WCAScramble,
-	    get777SiGNScramble: get777SiGNScramble,
-	    get777edgesScramble: get777edgesScramble,
+		  get777WCAScramble: get777WCAScramble,
+		  get777SiGNScramble: get777SiGNScramble,
+		  get777edgesScramble: get777edgesScramble,
 
-	    get333_2genRU_scramble: get333_2genRU_scramble,
-	    get333_2genLU_scramble: get333_2genLU_scramble,
-	    get333_2genMU_scramble: get333_2genMU_scramble,
-	    get333_3genFRU_scramble: get333_3genFRU_scramble,
-	    get333_3genRUL_scramble: get333_3genRUL_scramble,
-	    get333_3genRrU_scramble: get333_3genRrU_scramble,
-	    get333_halfTurns_scramble: get333_halfTurns_scramble,
+		  get333_2genRU_scramble: get333_2genRU_scramble,
+		  get333_2genLU_scramble: get333_2genLU_scramble,
+		  get333_2genMU_scramble: get333_2genMU_scramble,
+		  get333_3genFRU_scramble: get333_3genFRU_scramble,
+		  get333_3genRUL_scramble: get333_3genRUL_scramble,
+		  get333_3genRrU_scramble: get333_3genRrU_scramble,
+		  get333_halfTurns_scramble: get333_halfTurns_scramble,
 
-	    getSkewbULRBScramble: getSkewbULRBScramble,
+		  getSkewbULRBScramble: getSkewbULRBScramble,
 
-	    get332scramble: get332scramble,
-	    get334scramble: get334scramble,
-	    get336scramble: get336scramble,
-	    get335scramble: get335scramble,
-	    get337scramble: get337scramble,
-	    get112scramble: get112scramble,
-	    getSuperFloppyScramble: getSuperFloppyScramble,
+		  get332scramble: get332scramble,
+		  get333DoubleMoveScramble: get333DoubleMoveScramble,
+		  get334scramble: get334scramble,
+		  get336scramble: get336scramble,
+		  get335scramble: get335scramble,
+		  get337scramble: get337scramble,
+		  get112scramble: get112scramble,
+		  getSuperFloppyScramble: getSuperFloppyScramble,
 
-	    get888scramble: get888scramble,
-	    get999scramble: get999scramble,
-	    get101010scramble: get101010scramble,
-	    get111111scramble: get111111scramble,
+		  get888scramble: get888scramble,
+		  get999scramble: get999scramble,
+		  get101010scramble: get101010scramble,
+		  get111111scramble: get111111scramble,
 
-		get111scramble: get111scramble,
+		  get111scramble: get111scramble,
+		  getLettuceRecipe: getLettuceRecipe,
 	  }
 
 })(scrambleCS.mega, mathlib.rn, mathlib.rndEl);

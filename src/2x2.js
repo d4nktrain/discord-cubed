@@ -1,4 +1,4 @@
-import {imagestring, jaapschSeq, setSize} from "./jaapschlib/genScramble";
+import {imagestring, jaapschSeq, setSize} from "./lib/genScramble";
 var nodeHtmlToImage = require("node-html-to-image")
 var Jimp = require('jimp')
 

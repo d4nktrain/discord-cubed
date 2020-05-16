@@ -1,25 +1,42 @@
+import {megaScrambler} from "./lib/megascramble";
+import {imagestring, jaapschSeq, setSize} from "./lib/genScramble";
+
+var fs = require('fs')
+var Jimp = require('jimp')
+var nodeHtmlToImage = require('node-html-to-image')
+
 module.exports.run = async (bot, message, args) => {
-    let msgArr = [];
-    let scrambles = parseInt(args[0]);
-    scrambles = scrambles ? scrambles > 3 ? 3 : scrambles < 0 ? 1 : scrambles : 1;
-    let count = 0
-    for(var i = 0; i < scrambles; i++) {
-        let wides = ["Rw", "Uw", "Lw", "Dw", "Fw", "Bw", "3Rw", "3Uw", "3Lw", "3Dw", "3Fw", "3Bw", "4Rw", "4Uw", "4Lw", "4Dw", "4Fw", "4Bw"];
-        let nonWides = ["R", "U", "L", "D", "F", "B"];
-        let scramble = [];
-        let i = 0;
-        while(scramble.length < 120) {
-            let move = Math.random() > 0.3 ? nonWides[Math.floor(Math.random() * nonWides.length)] : wides[Math.floor(Math.random() * wides.length)];
-            if(i > 0 && (scramble[i - 1] === move)) {
-                continue;
-            } else {
-                scramble.push(move);
-                i++;
-            }
-        }
-        msgArr.push((count+1) + ". " + scramble.map(index => Math.random() < 0.5 ? index += "2" : index += "\'").join(" "));
-        count++
+    let scrambles = parseInt(args[0])
+    scrambles = scrambles ? scrambles > 3 ? 3 : scrambles < 0 ? 1 : scrambles : 1
+
+    for(let i = 0; i < scrambles; i++) {
+        let scramble = [`${i+1}. `, megaScrambler.get888scramble(100)]
+
+        message.channel.send(scramble.join("")).then((msg) => {
+            msg.react("👀")
+            msg.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👀'),
+                { max: 1, time: 15000 }).then(collected => {
+                if (collected.first().count >= 2) {
+                    setSize(8)
+                    nodeHtmlToImage({
+                        output: './pngs/' + msg.id + '.png',
+                        html: imagestring(jaapschSeq(scramble[1], 8))
+                    }).then(async () => {
+                        let image = await Jimp.read('./pngs/' + msg.id + '.png')
+                        image.crop(1, 1, 321, 241).resize(640, 480, Jimp.RESIZE_NEAREST_NEIGHBOR).write('./pngs/' + msg.id + '.png', () => {
+                            msg.channel.send("", {
+                                file: './pngs/' + msg.id + '.png'
+                            }).then(() => {
+                                fs.unlinkSync('./pngs/' + msg.id + '.png')
+                            })
+                        })
+                    })
+                }
+                msg.clearReactions()
+            }).catch(() => {
+                msg.clearReactions()
+            });
+        })
     }
-    return message.channel.send(msgArr.join("\n\n"));
 };
 module.exports.config = { name: "8x8", aliases: ["8x8x8", "8"] };

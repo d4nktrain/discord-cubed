@@ -1,16 +1,24 @@
-import {scramble_333} from "./lib/scramble_333_edit";
+import {megaScrambler} from "./lib/megascramble";
 import {imagestring, jaapschSeq, setSize} from "./lib/genScramble";
 var nodeHtmlToImage = require("node-html-to-image")
 var Jimp = require('jimp')
 
 var fs = require("fs")
 
+function escapeRegExp(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function replaceAll(str, term, replacement) {
+    return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement);
+}
+
 module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0])
     scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
 
     for(let i = 0; i < scrambles; i++) {
-        let scramble = [`${i + 1}. `, scramble_333.getRandomScramble()]
+        let scramble = [`${i + 1}. `, replaceAll(replaceAll(megaScrambler.get333DoubleMoveScramble(), "22", "2"), "'", "")]
 
         message.channel.send(scramble.join("")).then((msg) => {
             msg.react("👀")
@@ -39,4 +47,4 @@ module.exports.run = async (bot, message, args, cube) => {
         })
     }
 };
-module.exports.config = { name: "3x3", aliases: ["3x3x3", "3"] }
+module.exports.config = { name: "3x3double", aliases: ["3x3d", "3d"] }

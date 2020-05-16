@@ -1,3 +1,4 @@
+//FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
 
 import {mathlib} from "./mathlib"
@@ -8,6 +9,24 @@ var util_scramble = (function(rn, rndEl, mega) {
     var minxsuff = ["", "2", "'", "2'"];
     var seq = [];
     var p = [];
+
+    function adjScramble(faces, adj, len, suffixes) {
+        if (suffixes == undefined) {
+            suffixes = [""];
+        }
+        var used = 0;
+        var face;
+        var ret = [];
+        for (var j = 0; j < len; j++) {
+            do {
+                face = rn(faces.length);
+            } while ((used >> face) & 1);
+            ret.push(faces[face] + rndEl(suffixes));
+            used &= ~adj[face];
+            used |= 1 << face;
+        }
+        return ret.join(" ");
+    }
 
     function helicubescramble(type, len) {
         var faces = ["UF", "UR", "UB", "UL", "FR", "BR", "BL", "FL", "DF", "DR", "DB", "DL"];
@@ -288,6 +307,21 @@ var util_scramble = (function(rn, rndEl, mega) {
         return u;
     }
 
+    function addPyrTips(scramble, moveLen) {
+        var cnt = 0;
+        var rnd = [];
+        for (var i = 0; i < 4; i++) {
+            rnd[i] = rn(3);
+            if (rnd[i] > 0) {
+                rnd[i] = "ulrb".charAt(i) + ["! ", "' "][rnd[i] - 1];
+                cnt++;
+            } else {
+                rnd[i] = "";
+            }
+        }
+        return scramble.substr(0, scramble.length - moveLen * cnt) + " " + rnd.join("");
+    }
+
     function sq1_getseq(num, type, len) {
         for (var n = 0; n < num; n++) {
             p = [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0];
@@ -404,6 +438,9 @@ var util_scramble = (function(rn, rndEl, mega) {
                 return ret.replace(/!/g, "");
             case "prcp": // Pyraminx Crystal (Pochmann)
                 return pochscramble(10, Math.ceil(len / 10));
+            case "mpyr": // Master Pyraminx
+                ret = adjScramble(["U!", "L!", "R!", "B!", "Uw", "Lw", "Rw", "Bw"], [0xe0, 0xd0, 0xb0, 0x70, 0xee, 0xdd, 0xbb, 0x77], 42, ["!", "'"]);
+                return addPyrTips(ret, 4).replace(/!/g, "");
             case "r3": // multiple 3x3x3 relay
                 for (var i = 0; i < len; i++) {
                     ret += (i == 0 ? "" : "\n") + (i + 1) + ") ${333}";
@@ -474,6 +511,9 @@ var util_scramble = (function(rn, rndEl, mega) {
     function getSquareOneTwistMetricScramble(n){
         return sq1_scramble(0, n);
     }
+    function getMasterPyraScramble() {
+        return utilscramble("mpyr", 10)
+    }
 
     function getRediWCAScramble(n) {
         var ret = [];
@@ -499,6 +539,7 @@ var util_scramble = (function(rn, rndEl, mega) {
         getClockEfficientPinOrderScramble: getClockEfficientPinOrderScramble,
 
         getRediWCAScramble: getRediWCAScramble,
+        getMasterPyraScramble: getMasterPyraScramble,
     }
 
 

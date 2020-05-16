@@ -1,4 +1,4 @@
-import {megaScrambler} from "./cstimerlib/megascramble";
+import {megaScrambler} from "./lib/megascramble";
 
 function randomElement(arr) {
     return arr[Math.floor(Math.random()*arr.length)];
