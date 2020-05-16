@@ -1,4 +1,4 @@
-import {scramble_333} from "./cstimerlib/scramble_333_edit"
+import {scramble_333} from "./lib/scramble_333_edit"
 
 module.exports.run = async (bot, message, args, cube) => {
 	let scrambles = parseInt(args[0])

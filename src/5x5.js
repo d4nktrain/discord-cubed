@@ -1,5 +1,5 @@
-import {megaScrambler} from "./cstimerlib/megascramble";
-import {imagestring, jaapschSeq, setSize} from "./jaapschlib/genScramble";
+import {megaScrambler} from "./lib/megascramble";
+import {imagestring, jaapschSeq, setSize} from "./lib/genScramble";
 
 var fs = require('fs')
 var Jimp = require('jimp')

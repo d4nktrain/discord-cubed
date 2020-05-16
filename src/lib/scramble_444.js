@@ -1,3 +1,4 @@
+//FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
 
 import {scramble_333} from "./scramble_333_edit";

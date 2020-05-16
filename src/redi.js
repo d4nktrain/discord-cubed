@@ -1,4 +1,4 @@
-import {util_scramble} from "./cstimerlib/utilscramble";
+import {util_scramble} from "./lib/utilscramble";
 
 module.exports.run = async (bot, message, args, cube) => {
 	let msgArr = [];

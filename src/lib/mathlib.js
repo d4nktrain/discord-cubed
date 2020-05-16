@@ -1,3 +1,5 @@
+//FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
+
 "use strict";
 
 var mathlib = (function() {

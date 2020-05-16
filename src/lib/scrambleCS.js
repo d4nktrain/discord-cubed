@@ -1,3 +1,4 @@
+//FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
 import {mathlib} from "./mathlib"
 
