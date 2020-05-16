@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args, cube) => {
 					}).then(async () => {
 						let image = await Jimp.read('./pngs/' + msg.id + '.png')
 						image.crop(1, 1, 201, 151).resize(400, 300, Jimp.RESIZE_NEAREST_NEIGHBOR).write('./pngs/' + msg.id + '.png', () => {
-							msg.channel.send("", {
+							msg.channel.send("The visualization process is currently unstable, do not expect it to be right", {
 								file: './pngs/' + msg.id + '.png'
 							}).then(() => {
 								fs.unlinkSync('./pngs/' + msg.id + '.png')
