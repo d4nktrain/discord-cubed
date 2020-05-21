@@ -199,7 +199,7 @@ var clock = (function(rn, Cnk) {
 
 	var turns = ["UR", "DR", "DL", "UL", "U", "R", "D", "L", "ALL"];
 
-	function getScramble(type) {
+	function getScramble() {
 		var rndarr = randomState();
 		var solution = [];
 		solution.length = 18;
@@ -239,10 +239,11 @@ var clock = (function(rn, Cnk) {
 		return scramble;
 	}
 
-	scrambleCS.reg('clko', getScramble);
+	// scrambleCS.reg('clko', getScramble);
 
 	return {
-		moveArr: moveArr
+		moveArr: moveArr,
+		getScramble: getScramble
 	};
 
 })(mathlib.rn, mathlib.Cnk);

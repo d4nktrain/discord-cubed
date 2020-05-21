@@ -1,5 +1,5 @@
 import {scramble_444} from "./lib/scramble_444";
-import {imagestring, jaapschSeq, setSize} from "./lib/genScramble";
+import {imagestring, setSize} from "./lib/genScramble";
 
 var nodeHtmlToImage = require('node-html-to-image')
 var Jimp = require('jimp')
@@ -20,11 +20,11 @@ module.exports.run = async (bot, message, args, cube) => {
 					setSize(4)
 					nodeHtmlToImage({
 						output: './pngs/' + msg.id + '.png',
-						html: imagestring(jaapschSeq(scramble[1], 4))
-					}).then(async () => {
+						html: imagestring(scramble[1], 4)
+                    }).then(async () => {
 						let image = await Jimp.read('./pngs/' + msg.id + '.png')
 						image.crop(1, 1, 161, 121).resize(320, 240, Jimp.RESIZE_NEAREST_NEIGHBOR).write('./pngs/' + msg.id + '.png', () => {
-							msg.channel.send("", {
+							msg.channel.send(i+1 + ".", {
 								file: './pngs/' + msg.id + '.png'
 							}).then(() => {
 								fs.unlinkSync('./pngs/' + msg.id + '.png')
