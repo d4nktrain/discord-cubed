@@ -6,15 +6,16 @@ module.exports.run = async (bot, message, args) => {
 		return message.channel.send(new Discord.RichEmbed()
 			.setTitle("Send suggestions to the dev (danktrain#0001)")
 			.setColor("RANDOM")
-			.setDescription("Usage: \`s!suggest <suggestion>\` or \`s!suggest view\`"))
+			.setDescription("Usage: \`s!suggest <suggestion>\`, \`s!suggest view\`, or \`s!suggest view <tag>\`"))
     }
     if(args[0] === "view") {
         let suggestionsArray = JSON.parse(fs.readFileSync(__dirname + '/../suggestions.json').toString())
 
-        let embed = new Discord.RichEmbed().setTitle("Your suggestions")
-        bot.fetchUser(message.author.id).then(user => {
+        let embed = new Discord.RichEmbed()
+        if(args[1]) {
+            embed.setTitle(args[1] + "'s suggestions")
             for(let i = 0; i < suggestionsArray.length; i++) {
-                if(suggestionsArray[i].person === user.tag) {
+                if(suggestionsArray[i].person === args[1]) {
                     if(suggestionsArray[i].status) {
                         embed.addField(suggestionsArray[i].suggestion, suggestionsArray[i].status)
                     } else {
@@ -22,8 +23,22 @@ module.exports.run = async (bot, message, args) => {
                     }
                 }
             }
-            return message.channel.send(embed)
-        })
+            message.channel.send(embed)
+        } else {
+            embed.setTitle("Your suggestions")
+            bot.fetchUser(message.author.id).then(user => {
+                for(let i = 0; i < suggestionsArray.length; i++) {
+                    if(suggestionsArray[i].person === user.tag) {
+                        if(suggestionsArray[i].status) {
+                            embed.addField(suggestionsArray[i].suggestion, suggestionsArray[i].status)
+                        } else {
+                            embed.addField(suggestionsArray[i].suggestion, "Hasn't been reviewed yet")
+                        }
+                    }
+                }
+                message.channel.send(embed)
+            })
+        }
         return
     }
     if((args[0] === "status") && message.author.id === "182620322846081024") {
