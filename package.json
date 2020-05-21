@@ -10,11 +10,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "canvas": "^2.6.1",
     "discord.js": "^11.4.2",
     "esm": "^3.2.25",
     "jimp": "^0.10.3",
     "mongodb": "^3.1.13",
     "node-html-to-image": "^2.0.0",
+    "scramble-image": "0.0.16",
     "scrambo": "^0.3.0"
   }
 }

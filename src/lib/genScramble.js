@@ -7,45 +7,43 @@ var mult=false;
 var colorString = "yobwrg";  //In dlburf order. May use any colours in colorList below
 
 // list of available colours
-var colorList=new Array(
-    'y', "yellow", "yellow",
+var colorList=['y', "yellow", "yellow",
     'b', "blue",   "blue",
     'r', "red",    "red",
     'w', "white",  "white",
     'g', "green",  "green",
     'o', "#ff8000","orange",   // 'orange' is not an official html colour name
     'p', "purple", "purple",
-    '0', "gray",   "grey"      // used for unrecognised letters, or when zero used.
-);
+    '0', "gray",   "grey"];
 
-var colors=new Array(); //stores colours used
-var posit = new Array();   // facelet array
+var colors=[]; //stores colours used
+var posit = [];   // facelet array
 var flat2posit;   //lookup table for drawing cube
-var colorPerm = new Array(); //dlburf
-colorPerm[ 0] = new Array(0,1,2,3,4,5);
-colorPerm[ 1] = new Array(0,2,4,3,5,1);
-colorPerm[ 2] = new Array(0,4,5,3,1,2);
-colorPerm[ 3] = new Array(0,5,1,3,2,4);
-colorPerm[ 4] = new Array(1,0,5,4,3,2);
-colorPerm[ 5] = new Array(1,2,0,4,5,3);
-colorPerm[ 6] = new Array(1,3,2,4,0,5);
-colorPerm[ 7] = new Array(1,5,3,4,2,0);
-colorPerm[ 8] = new Array(2,0,1,5,3,4);
-colorPerm[ 9] = new Array(2,1,3,5,4,0);
-colorPerm[10] = new Array(2,3,4,5,0,1);
-colorPerm[11] = new Array(2,4,0,5,1,3);
-colorPerm[12] = new Array(3,1,5,0,4,2);
-colorPerm[13] = new Array(3,2,1,0,5,4);
-colorPerm[14] = new Array(3,4,2,0,1,5);
-colorPerm[15] = new Array(3,5,4,0,2,1);
-colorPerm[16] = new Array(4,0,2,1,3,5);
-colorPerm[17] = new Array(4,2,3,1,5,0);
-colorPerm[18] = new Array(4,3,5,1,0,2);
-colorPerm[19] = new Array(4,5,0,1,2,3);
-colorPerm[20] = new Array(5,0,4,2,3,1);
-colorPerm[21] = new Array(5,1,0,2,4,3);
-colorPerm[22] = new Array(5,3,1,2,0,4);
-colorPerm[23] = new Array(5,4,3,2,1,0);
+var colorPerm = []; //dlburf
+colorPerm[ 0] = [0,1,2,3,4,5];
+colorPerm[ 1] = [0,2,4,3,5,1];
+colorPerm[ 2] = [0,4,5,3,1,2];
+colorPerm[ 3] = [0,5,1,3,2,4];
+colorPerm[ 4] = [1,0,5,4,3,2];
+colorPerm[ 5] = [1,2,0,4,5,3];
+colorPerm[ 6] = [1,3,2,4,0,5];
+colorPerm[ 7] = [1,5,3,4,2,0];
+colorPerm[ 8] = [2,0,1,5,3,4];
+colorPerm[ 9] = [2,1,3,5,4,0];
+colorPerm[10] = [2,3,4,5,0,1];
+colorPerm[11] = [2,4,0,5,1,3];
+colorPerm[12] = [3,1,5,0,4,2];
+colorPerm[13] = [3,2,1,0,5,4];
+colorPerm[14] = [3,4,2,0,1,5];
+colorPerm[15] = [3,5,4,0,2,1];
+colorPerm[16] = [4,0,2,1,3,5];
+colorPerm[17] = [4,2,3,1,5,0];
+colorPerm[18] = [4,3,5,1,0,2];
+colorPerm[19] = [4,5,0,1,2,3];
+colorPerm[20] = [5,0,4,2,3,1];
+colorPerm[21] = [5,1,0,2,4,3];
+colorPerm[22] = [5,3,1,2,0,4];
+colorPerm[23] = [5,4,3,2,1,0];
 
 var setSize = function setSize(inputSize) {
     size = inputSize
@@ -160,7 +158,6 @@ var jaapschSeq = function jaapschSeq(scramble, inputSize) {
 
     sequence.push("0")
 
-    console.log(sequence.join(" ").split(" "))
     return sequence.join(" ").split(" ")
 }
 
@@ -374,7 +371,9 @@ parse();
 //     return(s);
 // }
 
-var imagestring = function imagestring(input) {
+var imagestring = function imagestring(input, sizeIn) {
+
+    input = jaapschSeq(input, sizeIn)
 
     //build lookup table
     flat2posit=new Array(12*size*size);
@@ -614,4 +613,4 @@ function doslice(f,d,q){
 //     document.frm.subbutton.focus();
 // }
 
-export{imagestring, setSize, jaapschSeq}
+export{imagestring, setSize}
