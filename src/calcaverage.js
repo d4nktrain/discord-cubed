@@ -1,7 +1,10 @@
 module.exports.run = async (bot, message, args, cube) => {
-
     let sum = 0
     let time = 0
+
+    args.sort((a,b)=>Number(a)-Number(b))
+    args.pop()
+    args.shift()
 
     for (var i = 0; i < args.length; i++) {
         sum += Number(args[i])
