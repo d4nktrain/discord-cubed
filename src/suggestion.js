@@ -9,13 +9,14 @@ module.exports.run = async (bot, message, args) => {
 			.setDescription("Usage: \`s!suggest <suggestion>\`, \`s!suggest view\`, or \`s!suggest view <tag>\`"))
     }
     if(args[0] === "view") {
+        args.shift()
         let suggestionsArray = JSON.parse(fs.readFileSync(__dirname + '/../suggestions.json').toString())
 
         let embed = new Discord.RichEmbed()
-        if(args[1]) {
-            embed.setTitle(args[1] + "'s suggestions")
+        if(args.join(" ")) {
+            embed.setTitle(args.join(" ") + "'s suggestions")
             for(let i = 0; i < suggestionsArray.length; i++) {
-                if(suggestionsArray[i].person === args[1]) {
+                if(suggestionsArray[i].person === args.join(" ")) {
                     if(suggestionsArray[i].status) {
                         embed.addField(suggestionsArray[i].suggestion, suggestionsArray[i].status)
                     } else {
