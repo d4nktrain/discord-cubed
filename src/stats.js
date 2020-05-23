@@ -8,6 +8,7 @@ module.exports.run = async (bot, message, args, cube) => {
 	minutes = parseInt(total_minutes % 60);
 	hours = parseInt(total_hours % 24);
 	let uptimeStr = `${days} days, ${hours} hours, ${minutes} minutes`;
+	//:)
 	return message.channel.send(`Humans:  ${bot.users.filter((usr) => !usr.bot).size}\nTotal Users:  ${bot.users.size}\nTotal Servers:  ${bot.guilds.size}\nUptime: ${uptimeStr}`);
 };
 module.exports.config = { name: "stats", aliases: ["botstats"] };
