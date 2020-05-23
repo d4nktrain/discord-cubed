@@ -62,6 +62,20 @@ module.exports.run = async (bot, message, args) => {
         }
         return
     }
+    if((args[0] === "viewdone") && message.author.id === "182620322846081024") {
+        var i,j,temparray,chunk = 25;
+        for (i=0,j=suggestionsArray.length; i<j; i+=chunk) {
+            let embed = new Discord.RichEmbed();
+            temparray = suggestionsArray.slice(i,i+chunk);
+            for(let k = 0; k < temparray.length; k++) {
+                if (temparray[k].status === "done!") {
+                    embed.addField(temparray[k].person, temparray[k].suggestion)
+                }
+            }
+            message.channel.send(embed)
+        }
+        return
+    }
     if((args[0] === "del") && message.author.id === "182620322846081024") {
         message.channel.fetchMessages().then(async messages => {
             for (const msg of messages.array()) {
