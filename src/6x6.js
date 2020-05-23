@@ -13,9 +13,11 @@ module.exports.run = async (bot, message, args) => {
 			msg.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👀'),
 				{max: 1, time: 15000}).then(async collected => {
 				if (collected.first().count >= 2) {
-					var imagebuffer = await scrambleImage.genImage("666", scramble[1], "default")
+					var imageBuffer = await scrambleImage.genImage("666", scramble[1], "default")
 					msg.channel.send(i+1 + ".", {
-						file: imagebuffer
+						file: imageBuffer
+					}).then((image) => {
+						image.delete(300000*(i+1))
 					})
 				}
 				msg.clearReactions()

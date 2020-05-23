@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args, cube) => {
     let dnfs = 0
 
     for (var i = 0; i < args.length; i++) {
-        if(args[i] === "DNF") {
+        if(args[i].toLowerCase() === "dnf") {
             args[i] = 1290398*Math.random()
             dnfs++
         }
@@ -30,6 +30,8 @@ module.exports.run = async (bot, message, args, cube) => {
         time = time.split("")
         time = time[0] + time[1] + time[2] + time[3] + time[4]
     }
+
+    if(isNaN(time)) return message.channel.send("Invalid times!")
 
     return message.channel.send(time)
 };

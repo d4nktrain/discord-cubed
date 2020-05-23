@@ -15,6 +15,8 @@ module.exports.run = async (bot, message, args, cube) => {
 					var imageBuffer = await scrambleImage.genImage("clk", scramble[1], "default")
 					msg.channel.send(i+1 + ".", {
 						file: imageBuffer
+					}).then((image) => {
+						image.delete(300000*(i+1))
 					})
 				}
 				msg.clearReactions()
