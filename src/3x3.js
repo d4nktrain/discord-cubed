@@ -1,9 +1,6 @@
 import {scramble_333} from "./lib/scramble_333_edit";
-import {imagestring, setSize} from "./lib/genScramble";
 
-var fs = require("fs")
-var nodeHtmlToImage = require("node-html-to-image")
-var Jimp = require("jimp")
+var scrambleImage = require("scramble-image")
 
 module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0])
@@ -15,21 +12,11 @@ module.exports.run = async (bot, message, args, cube) => {
         message.channel.send(scramble.join("")).then((msg) => {
             msg.react("👀")
             msg.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👀'),
-                {max: 1, time: 15000}).then(collected => {
+                {max: 1, time: 15000}).then(async collected => {
                 if (collected.first().count >= 2) {
-                    setSize(3)
-                    nodeHtmlToImage({
-                        output: './pngs/' + msg.id + '.png',
-                        html: imagestring(scramble[1], 3)
-                    }).then(async () => {
-                        let image = await Jimp.read('./pngs/' + msg.id + '.png')
-                        image.crop(1, 1, 121, 91).resize(240, 180, Jimp.RESIZE_NEAREST_NEIGHBOR).write('./pngs/' + msg.id + '.png', () => {
-                            msg.channel.send(i+1 + ".", {
-                                file: './pngs/' + msg.id + '.png'
-                            }).then(() => {
-                                fs.unlinkSync('./pngs/' + msg.id + '.png')
-                            })
-                        })
+                    var imagebuffer = await scrambleImage.genImage("333", scramble[1], "default")
+                    msg.channel.send(i+1 + ".", {
+                        file: imagebuffer
                     })
                 }
                 msg.clearReactions()
