@@ -1,5 +1,5 @@
 //*sigh* lets get this over with
-import {megaScrambler} from "./lib/megascramble"
+var megaScrambler = require("./lib/megascramble")
 
 module.exports.run = async (bot, message, args, cube) => {
     let msgArr = []

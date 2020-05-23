@@ -1,7 +1,8 @@
-import {util_scramble} from "./src/lib/utilscramble";
-import {scramble_444} from "./src/lib/scramble_444";
-import {megaScrambler} from "./src/lib/megascramble";
-import {scramble_333} from "./src/lib/scramble_333_edit";
+var util_scramble = require("./src/lib/utilscramble");
+var scramble_444 =  require("./src/lib/scramble_444");
+var megaScrambler = require("./src/lib/megascramble");
+var scramble_333 = require("./src/lib/scramble_333_edit");
+var clock = require("./src/lib/clockcs")
 
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
@@ -120,7 +121,7 @@ module.exports = {
 	},
 
 	clockx: function () {
-		return util_scramble.getClockWCAScramble()
+		return clock.getScramble()
 	},
 
 	megax: function () {

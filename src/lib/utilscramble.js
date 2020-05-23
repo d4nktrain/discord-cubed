@@ -1,10 +1,10 @@
 //FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
 
-import {mathlib} from "./mathlib"
-import {scrambleCS} from "./scrambleCS"
+var mathlib = require("./mathlib")
+var scrambleCS = require("./scrambleCS")
 
-var util_scramble = (function(rn, rndEl, mega) {
+module.exports = (function(rn, rndEl, mega) {
     var cubesuff = ["", "2", "'"];
     var minxsuff = ["", "2", "'", "2'"];
     var seq = [];
@@ -546,5 +546,3 @@ var util_scramble = (function(rn, rndEl, mega) {
     //scramble.reg(['15p', '15pm', 'clkwca', 'clk', 'clkc', 'clke', 'giga', 'mgmo', 'mgmp', 'mgmc', 'pyrm', 'prcp', 'r3', 'sq1h', 'sq1t', 'sq2', 'ssq1t', 'bsq', '-1', '333noob', 'lol'], utilscramble);
 
 })(mathlib.rn, mathlib.rndEl, scrambleCS.mega);
-
-export {util_scramble}

@@ -1,4 +1,4 @@
-import {megaScrambler} from "./lib/megascramble";
+var megaScrambler = require("./lib/megascramble");
 
 function randomElement(arr) {
     return arr[Math.floor(Math.random()*arr.length)];

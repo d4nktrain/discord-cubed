@@ -1,4 +1,4 @@
-import {scramble_333} from "./lib/scramble_333_edit";
+var scramble_333 = require("./lib/scramble_333_edit");
 
 function randomElement(arr) {
     return arr[Math.floor(Math.random()*arr.length)]

@@ -1,4 +1,4 @@
-import {scramble_333} from "./lib/scramble_333_edit";
+var scramble_333 = require("./lib/scramble_333_edit");
 
 var scrambleImage = require("scramble-image")
 

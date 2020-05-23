@@ -1,8 +1,8 @@
 //FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
-import {scrambleCS} from "./scrambleCS"
-import {mathlib} from "./mathlib"
+var scrambleCS = require("./scrambleCS")
+var mathlib = require("./mathlib")
 
-var megaScrambler = (function(mega, rn, rndEl) {
+module.exports = (function(mega, rn, rndEl) {
 	var cubesuff=["","2","'"];
 	var minxsuff=["","2","'","2'"];
 	var args = {
@@ -339,5 +339,3 @@ var megaScrambler = (function(mega, rn, rndEl) {
 	  }
 
 })(scrambleCS.mega, mathlib.rn, mathlib.rndEl);
-
-export {megaScrambler}

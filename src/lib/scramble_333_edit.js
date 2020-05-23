@@ -12,10 +12,10 @@ Compiled to Javascript using GWT.
  */
 "use strict";
 
-import {mathlib} from "./mathlib";
-import {min2phase} from "./min2phase";
+var mathlib = require("./mathlib")
+var min2phase = require("./min2phase")
 
-var scramble_333 = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl) {
+module.exports = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl) {
 
     var Ux1 = 0,
         Ux2 = 1,
@@ -703,5 +703,3 @@ var scramble_333 = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl
     };
 
 })(mathlib.getNPerm, mathlib.setNPerm, mathlib.set8Perm, mathlib.getNParity, mathlib.rn, mathlib.rndEl);
-
-export {scramble_333}
