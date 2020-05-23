@@ -65,9 +65,8 @@ module.exports.run = async (bot, message, args) => {
     if((args[0] === "del") && message.author.id === "182620322846081024") {
         message.channel.fetchMessages().then(async messages => {
             for (const msg of messages.array()) {
-                if(msg.author.bot) {
-                    if(!msg.content.includes("Successfully set status!")) msg.delete()
-                }
+                if(msg.author.bot && !msg.content.includes("Successfully set status!")) msg.delete()
+                else if(msg.author.id === "182620322846081024" && !msg.content.includes("suggest status")) msg.delete()
             }
         })
         return
