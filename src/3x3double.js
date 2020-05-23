@@ -1,4 +1,4 @@
-import {megaScrambler} from "./lib/megascramble";
+var megaScrambler = require("./lib/megascramble");
 var scrambleImage = require("scramble-image")
 
 function escapeRegExp(string){

@@ -1,4 +1,4 @@
-import {util_scramble} from "./lib/utilscramble";
+var util_scramble = require("./lib/utilscramble");
 
 module.exports.run = async (bot, message, args, cube) => {
     let scrambles = parseInt(args[0])

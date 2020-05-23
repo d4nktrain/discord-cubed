@@ -2,7 +2,7 @@
 
 "use strict";
 
-var mathlib = (function() {
+module.exports = (function() {
 
 	var Cnk = [], fact = [1];
 	for (var i=0; i<32; ++i) {
@@ -303,5 +303,3 @@ var mathlib = (function() {
 	}
 
 })();
-
-export {mathlib}

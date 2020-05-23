@@ -1,8 +1,8 @@
 //FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
-import {mathlib} from "./mathlib"
+var mathlib = require("./mathlib")
 
-var scrambleCS = (function(rn, rndEl) {
+module.exports = (function(rn, rndEl) {
 	//var div = $('<div id="scrambleDiv"/>');
 	//var title = $('<div />').addClass('title');
 	//var select = $('<select />');
@@ -370,5 +370,3 @@ var scrambleCS = (function(rn, rndEl) {
 	}
 
 })(mathlib.rn, mathlib.rndEl);
-
-export {scrambleCS}

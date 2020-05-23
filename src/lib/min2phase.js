@@ -1,7 +1,7 @@
 //FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
 
-var min2phase = (function() {
+module.exports = (function() {
     var USE_TWIST_FLIP_PRUN = true;
     var PARTIAL_INIT_LEVEL = 2;
 
@@ -1363,5 +1363,3 @@ var min2phase = (function() {
         }
     }
 })();
-
-export {min2phase}

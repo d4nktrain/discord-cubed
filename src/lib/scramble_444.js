@@ -1,10 +1,10 @@
 //FROM CSTIMER, MAY BE MODIFIED BY THE SCRAMBLER TEAM
 "use strict";
 
-import {scramble_333} from "./scramble_333_edit";
-import {mathlib} from "./mathlib";
+var scramble_333 = require("./scramble_333_edit");
+var mathlib = require("./mathlib")
 
-var scramble_444 = (function(rn, Cnk, circle) {
+module.exports = (function(rn, Cnk, circle) {
 
   function createArray(length1, length2) {
     var result, i;
@@ -2530,5 +2530,3 @@ var scramble_444 = (function(rn, Cnk, circle) {
   }
 
 })(mathlib.rn, mathlib.Cnk, mathlib.circle);
-
-export {scramble_444}

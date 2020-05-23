@@ -1,4 +1,4 @@
-import {clock} from "./lib/clockcs";
+var clock = require("./lib/clockcs")
 var scrambleImage = require("scramble-image")
 
 module.exports.run = async (bot, message, args, cube) => {

@@ -1,4 +1,4 @@
-import {util_scramble} from "./lib/utilscramble";
+var util_scramble = require("./lib/utilscramble");
 
 var fs = require("fs")
 var scrambleImage = require("scramble-image")

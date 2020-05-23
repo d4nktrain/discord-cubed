@@ -2,10 +2,9 @@
 
 "use strict";
 
-import {mathlib} from "./mathlib"
-import {scrambleCS} from "./scrambleCS"
+var mathlib = require("./mathlib")
 
-var clock = (function(rn, Cnk) {
+module.exports = (function(rn, Cnk) {
 	var moveArr = [
 		[0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], //UR
 		[0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0], //DR
@@ -247,5 +246,3 @@ var clock = (function(rn, Cnk) {
 	};
 
 })(mathlib.rn, mathlib.Cnk);
-
-export {clock}

@@ -1,4 +1,4 @@
-import {scramble_444} from "./lib/scramble_444";
+var scramble_444 =  require("./lib/scramble_444");
 var scrambleImage = require("scramble-image")
 
 module.exports.run = async (bot, message, args, cube) => {
