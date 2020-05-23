@@ -62,6 +62,16 @@ module.exports.run = async (bot, message, args) => {
         }
         return
     }
+    if((args[0] === "del") && message.author.id === "182620322846081024") {
+        message.channel.fetchMessages().then(async messages => {
+            for (const msg of messages.array()) {
+                if(msg.author.bot) {
+                    if(!msg.content.includes("Successfully set status!")) msg.delete()
+                }
+            }
+        })
+        return
+    }
     if((args[0] === "status") && message.author.id === "182620322846081024") {
         args.shift()
         let statusIn = args.join(" ").split("|")[0]
