@@ -26,3 +26,5 @@ module.exports.run = async (bot, message, args, cube) => {
 	}
 }
 module.exports.config = { name: "oh", aliases: ["onehanded", "one-handed", "onehand", "one-hand", "o"] }
+
+//yote
