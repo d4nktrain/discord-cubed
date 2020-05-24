@@ -1,6 +1,4 @@
-var scrambleImage = require("scramble-image")
-
-module.exports.run = async (bot, message, args, cube) => {
+module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 	let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 10 ? 10 : scrambles < 0 ? 1 : scrambles : 1;
 	for(let i = 0; i < scrambles; i++) {

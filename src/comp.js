@@ -1,5 +1,5 @@
 const scrambles = require("../relay.js");
-const redi = require("../rediremote");
+const util_scramble = require("./lib/utilscramble")
 const Discord = require("discord.js");
 const fs = require("fs");
 const defSet = {
@@ -79,7 +79,7 @@ module.exports.run = async (bot, message, args, cube) => {
 			let str = [`${event.name}\`\`\``];
 			for(let j = 0; j < event.count; j++) {
 				if(name == "redi") {
-					str.push(`${j + 1}: ${redi.generate_scramble_sequence()}`);
+					str.push(`${j + 1}: ${util_scramble.getRediWCAScramble(8)}`);
 				} else if(name == "3bld") {
 					str.push(`${j + 1}: ${eval(`scrambles["threebld"]()`)}`);
 				} else if(name == "2bld") {

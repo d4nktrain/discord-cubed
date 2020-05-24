@@ -1,7 +1,6 @@
 var megaScrambler = require("./lib/megascramble");
-var scrambleImage = require("scramble-image")
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, scrambleImage) => {
     let scrambles = parseInt(args[0])
     scrambles = scrambles ? scrambles > 3 ? 3 : scrambles < 0 ? 1 : scrambles : 1
 
