@@ -43,7 +43,7 @@ module.exports = {
 	},
 
 	threebld: function () {
-		var scramble = cube.type("333").length(20).get()
+		var scramble = scramble_333.getRandomScramble()
 
 		var rotation1 = randomElement(["Rw", "Rw2", "Rw'"])
         var rotation2 = randomElement(["Fw", "Fw2", "Fw'"])

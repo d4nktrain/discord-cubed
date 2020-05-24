@@ -1,10 +1,12 @@
+var fourCube = require("./lib/2x2x2")
+
 var scrambleImage = require("scramble-image")
 
 module.exports.run = async (bot, message, args, cube) => {
 	let scrambles = parseInt(args[0])
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
 	for(let i = 0; i < scrambles; i++) {
-		let scramble = [`${i + 1}. `, cube.type("222").length(10).get(1)[0]]
+		let scramble = [`${i + 1}. `, fourCube.getScramble("222o", 10)]
 
 		message.channel.send(scramble.join("")).then((msg) => {
 			msg.react("👀")
