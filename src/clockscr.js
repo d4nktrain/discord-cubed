@@ -2,6 +2,18 @@ var clock = require("./lib/clockcs")
 var scrambleImage = require("scramble-image")
 
 module.exports.run = async (bot, message, args, cube) => {
+	if(args[0] === "show") {
+		args.shift()
+		let scram = args.join(" ")
+
+		var imageBuffer = await scrambleImage.genImage("clk", scram, "default")
+		message.channel.send("", {
+			file: imageBuffer
+		}).then((image) => {
+			image.delete(300000*(i+1))
+		})
+		return
+	}
 	let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1;
 	for(let i = 0; i < scrambles; i++) {

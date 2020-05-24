@@ -12,18 +12,23 @@ module.exports.run = async (bot, message, args, cube) => {
 
 	let channel = args[0] ? message.mentions.channels.first() ? message.mentions.channels.first() : getChannel(args[0]) ? getChannel(args[0]) : null : message.channel;
 	if(channel != null && channel != undefined) {
-		message.channel.send(`Are you sure you want to post podiums for this competition in \`#${channel.name}\`? Doing so will also delete all results for this competition cycle. **Y**/*N*`).then(msg => msg.delete(10000));
+		message.channel.send(`Are you sure you want to post podiums for this competition in \`#${channel.name}\`? Doing so will also delete all results for this competition cycle. **Y**/*N*`).then(msg => {
+			message.channel.awaitMessages(m => m.author.id === message.author.id, {
+				max: 1,
+				time: 10000,
+				errors: ["time"]
+			}).then(async collected => {
+					if (collected.first() && collected.first().content.toLowerCase().startsWith("y")) {
+						postPodiums();
+					} else {
+						return message.channel.send("Action cancelled.");
+					}
+				})
+			msg.delete(10000)
+		});
 	} else {
 		return message.channel.send(`Unable to find channel \`#${args[0]}\`.`);
 	}
-	await message.channel.awaitMessages(m => m.author.id === message.author.id, { max: 1, time: 10000, errors: ["time"] })
-		.then(async collected => {
-			if(collected.first() && collected.first().content.toLowerCase().startsWith("y")) {
-				postPodiums();
-			} else {
-				return message.channel.send("Action cancelled.");
-			}
-		});
 
 	async function postPodiums() {
 		let podiums = [];
