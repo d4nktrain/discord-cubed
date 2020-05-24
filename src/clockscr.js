@@ -1,7 +1,6 @@
 var clock = require("./lib/clockcs")
-var scrambleImage = require("scramble-image")
 
-module.exports.run = async (bot, message, args, cube) => {
+module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 	if(args[0] === "show") {
 		args.shift()
 		let scram = args.join(" ")

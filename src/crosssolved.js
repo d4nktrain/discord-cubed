@@ -1,5 +1,4 @@
 var scramble_333 = require("./lib/scramble_333_edit");
-var scrambleImage = require("scramble-image")
 
 function crossColor(scramble, color) {
     var mapObj;
@@ -42,7 +41,7 @@ function crossColor(scramble, color) {
     }), exportColor]
 }
 
-module.exports.run = async (bot, message, args, cube) => {
+module.exports.run = async (bot, message, args, cube, scrambleImage) => {
     let scrambles = parseInt(args[1])
     scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
 

@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+const scrambleImage = require("scramble-image")
 const Scrambo = require("scrambo");
 const cube = new Scrambo();
 const fs = require("fs");
@@ -156,7 +157,7 @@ bot.on("message", async message => {
 		if(cmd === bot.commands.get("ignore")) {
 			if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You do not have permission to use this command.");
 			try {
-				await cmd.run(bot, message, args, cube);
+				await cmd.run(bot, message, args, cube, scrambleImage);
 			} catch(error) {
 				console.log(error.stack);
 				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to danktrain#0001 or in the official Scrambler Discord server. Do \`s!info\` for a link.`);
@@ -192,7 +193,7 @@ bot.on("message", async message => {
 				return message.channel.send("Bot is currently updating, should be back in 20 seconds or less.")
 			}
 			try {
-				await cmd.run(bot, message, args, cube);
+				await cmd.run(bot, message, args, cube, scrambleImage);
 			} catch(error) {
 				console.log(error.stack);
 				return message.channel.send(`:x: Error:\n\`\`\`\n${error.stack}\n\`\`\`\nPlease report this to danktrain#0001 or in the official Scrambler (UPS) Discord server. Do \`s!info\` for a link.`);

@@ -2,6 +2,7 @@ var util_scramble = require("./src/lib/utilscramble");
 var scramble_444 =  require("./src/lib/scramble_444");
 var megaScrambler = require("./src/lib/megascramble");
 var scramble_333 = require("./src/lib/scramble_333_edit");
+var fourCube = require("./src/lib/2x2x2")
 var clock = require("./src/lib/clockcs")
 
 const Scrambo = require("scrambo");
@@ -21,20 +22,22 @@ module.exports = {
 	},
 
 	twobld: function () {
+		var scramble = fourCube.getScramble("222so", 10)
+
 		var rotation1 = randomElement(["x", "x2", "x'"])
         var rotation2 = randomElement(["z", "z2", "z'"])
         var rotation3 = randomElement(["y", "y2", "y'"])
         var whatRotation = Math.floor(Math.random()*5)
         if(whatRotation == 0) {
-		    return cube.type("222").length(10).get() + " " + rotation1 + " " + rotation3
+		    return scramble + " " + rotation1 + " " + rotation3
         } else if(whatRotation == 1) {
-		    return cube.type("222").length(10).get() + " " + rotation2 + " " + rotation3
+		    return scramble + " " + rotation2 + " " + rotation3
         } else if(whatRotation == 2) {
-		    return cube.type("222").length(10).get() + " " + rotation1
+		    return scramble + " " + rotation1
         } else if(whatRotation == 3) {
-		    return cube.type("222").length(10).get() + " " + rotation2
+		    return scramble + " " + rotation2
         } else if(whatRotation == 4) {
-		    return cube.type("222").length(10).get() + " " + rotation3
+		    return scramble + " " + rotation3
         }
 	},
 
@@ -73,20 +76,22 @@ module.exports = {
 	},
 
 	fourbld: function () {
+		var scramble = scramble_444.getRandomScramble()
+
 		var rotation1 = randomElement(["x", "x2", "x'"])
         var rotation2 = randomElement(["z", "z2", "z'"])
         var rotation3 = randomElement(["y", "y2", "y'"])
         var whatRotation = Math.floor(Math.random()*5)
         if(whatRotation == 0) {
-		    return scramble_444.getRandomScramble() + rotation1 + " " + rotation3
+		    return scramble + rotation1 + " " + rotation3
         } else if(whatRotation == 1) {
-		    return scramble_444.getRandomScramble() + rotation2 + " " + rotation3
+		    return scramble + rotation2 + " " + rotation3
         } else if(whatRotation == 2) {
-		    return scramble_444.getRandomScramble() + rotation1
+		    return scramble + rotation1
         } else if(whatRotation == 3) {
-		    return scramble_444.getRandomScramble() + rotation2
+		    return scramble + rotation2
         } else if(whatRotation == 4) {
-		    return scramble_444.getRandomScramble() + rotation3
+		    return scramble + rotation3
         }
 	},
 
@@ -95,20 +100,22 @@ module.exports = {
 	},
 
 	fivebld: function () {
+		let scramble = megaScrambler.get555WCAScramble(60)
+
 		var rotation1 = randomElement(["3Rw", "3Rw2", "3Rw'"])
 		var rotation2 = randomElement(["3Fw", "3Fw2", "3Fw'"])
 		var rotation3 = randomElement(["3Uw", "3Uw2", "3Uw'"])
 		var whatRotation = Math.floor(Math.random()*5)
 		if(whatRotation == 0) {
-			return megaScrambler.get555WCAScramble(60) + " " + rotation1 + " " + rotation3
+			return scramble + " " + rotation1 + " " + rotation3
 		} else if(whatRotation == 1) {
-			return megaScrambler.get555WCAScramble(60) + " " + rotation2 + " " + rotation3
+			return scramble + " " + rotation2 + " " + rotation3
 		} else if(whatRotation == 2) {
-			return megaScrambler.get555WCAScramble(60) + " " + rotation1
+			return scramble + " " + rotation1
 		} else if(whatRotation == 3) {
-			return megaScrambler.get555WCAScramble(60) + " " + rotation2
+			return scramble + " " + rotation2
 		} else if(whatRotation == 4) {
-			return megaScrambler.get555WCAScramble(60) + " " + rotation3
+			return scramble + " " + rotation3
 		}
 	},
 

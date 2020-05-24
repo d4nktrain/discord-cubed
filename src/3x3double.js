@@ -1,5 +1,4 @@
 var megaScrambler = require("./lib/megascramble");
-var scrambleImage = require("scramble-image")
 
 function escapeRegExp(string){
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -9,7 +8,7 @@ function replaceAll(str, term, replacement) {
     return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement);
 }
 
-module.exports.run = async (bot, message, args, cube) => {
+module.exports.run = async (bot, message, args, cube, scrambleImage) => {
     let scrambles = parseInt(args[0])
     scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
 
