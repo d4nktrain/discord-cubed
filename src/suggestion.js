@@ -1,5 +1,10 @@
 const Discord = require("discord.js")
-const fs = require('fs')
+
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync(__dirname + "/../suggestions.json")
+const db = low(adapter)
 
 module.exports.run = async (bot, message, args) => {
     if(!args[0] || args[0] == "help") {
@@ -9,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 			.setDescription("Usage: \`s!suggest <suggestion>\`, \`s!suggest view\`, or \`s!suggest view <tag>\`"))
     }
 
-    let suggestionsArray = JSON.parse(fs.readFileSync(__dirname + '/../suggestions.json').toString())
+    let suggestionsArray = db.get('suggestions').value()
 
     if(args[0] === "view") {
         args.shift()
@@ -86,25 +91,25 @@ module.exports.run = async (bot, message, args) => {
         return
     }
     if((args[0] === "status") && message.author.id === "182620322846081024") {
+        suggestionsArray = db.get('suggestions')
+
         args.shift()
-        let statusIn = args.join(" ").split("|")[0]
 
-        let suggestion = args.join(" ").split("|")[1]
+        let suggestion = args.join(" ").split("|")[0]
 
-        for(let i = 0; i < suggestionsArray.length; i++) {
-            if(suggestionsArray[i].suggestion === suggestion) {
-                suggestionsArray[i].status = statusIn
-                fs.writeFileSync(__dirname + '/../suggestions.json', JSON.stringify(suggestionsArray))
-                message.channel.send("Successfully set status!")
-            }
-        }
-        return
+        let statusIn = args.join(" ").split("|")[1]
+
+        suggestionsArray.find({suggestion: suggestion}).value().status = statusIn
+
+        db.write()
+
+        return message.channel.send("Successfully set status!")
     }
     let suggestion = args.join(" ")
     if((suggestion.indexOf("1x1") != -1) || (suggestion.indexOf("0x0") != -1) || (suggestion.indexOf("your idea") != -1)) return message.channel.send("no. it could've been funny the first time someone said it, and it still wasn't. stop.")
     bot.fetchUser(message.author.id).then(user => {
-        suggestionsArray.push({"suggestion": suggestion, "person": user.tag})
-        fs.writeFileSync(__dirname + '/../suggestions.json', JSON.stringify(suggestionsArray))
+        suggestionsArray.push({"id": (db.get("suggestions").value().length), "suggestion": suggestion, "person": user.tag})
+        db.write()
     })
     console.log("Wrote " + suggestion + " as a suggestion")
     return message.channel.send("Wrote " + suggestion + " as a suggestion! If you want to see the status of your suggestion, do " + message.content.split(" ")[0] + " view")
