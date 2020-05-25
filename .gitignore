@@ -13,6 +13,7 @@ crap/
 suggestions.json
 kk.pem
 kk.ppk
+scrambler-rewrite/
 
 # Logs
 logs
