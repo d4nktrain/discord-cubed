@@ -63,32 +63,34 @@ module.exports.run = async (bot, message, args, cube) => {
 			return message.channel.send("There are no submissions for this event.");
 		}
 	} else if(args[0] == "reset") {
-		message.channel.send("Are you sure you want to delete all competition entries? This action is irreversible. **Y**/*N*");
-		message.channel.awaitMessages(m => m.author.id == message.author.id, { max: 1, time: 10000, errors: ["time"] })
-			.then(async collected => {
-				if(collected.first() && collected.first().content.toLowerCase().startsWith("y")) {
-					await bot.compResults.updateOne({ guildID: message.guild.id }, { $unset: { events: {} } });
-					return message.channel.send("Okay, all competition results have been deleted.");
-				} else {
-					return message.channel.send("Action cancelled.");
-				}
-			});
+		message.channel.send("Are you sure you want to delete all competition entries? This action is irreversible. **Y**/*N*").then((msg) => {
+			message.channel.awaitMessages(m => m.author.id == message.author.id, { max: 1, time: 10000, errors: ["time"] })
+				.then(async collected => {
+					if(collected.first() && collected.first().content.toLowerCase().startsWith("y")) {
+						await bot.compResults.updateOne({ guildID: message.guild.id }, { $unset: { events: {} } });
+						return message.channel.send("Okay, all competition results have been deleted.");
+					} else {
+						return message.channel.send("Action cancelled.");
+					}
+				});
+		})
 	} else if(eventList.includes(args[0])) {
 		let user = args[1] ? message.mentions.users.first() != null ? message.mentions.users.first() : isID(args[1]) ? message.guild.members.get(args[1]) : findUser(args[1]) != null ? findUser(args[1]) : null : null;
 		if(!user) return message.channel.send("Please mention a user, enter their ID, or their username.");
 		let username = message.guild.members.get(user.id).displayName;
 		if(!results[args[0]][user.id]) return message.channel.send(`This user does not have a time entered for \`${args[0]}\``);
-		message.channel.send(`Are you sure you want to delete ${username}'s time in ${args[0]}? **Y**/*N*`);
-		message.channel.awaitMessages(m => m.author.id == message.author.id, { max: 1, time: 10000, errors: ["time"] })
-			.then(async collected => {
-				if(collected.first() && collected.first().content.toLowerCase().startsWith("y")) {
-					delete results[args[0]][user.id];
-					await bot.compResults.updateOne({ guildID: message.guild.id }, { $set: { events: results } });
-					return message.channel.send(`Okay, I've deleted ${username}'s time from ${args[0]}!`);
-				} else {
-					return message.channel.send("Action cancelled.");
-				}
-			});
+		message.channel.send(`Are you sure you want to delete ${username}'s time in ${args[0]}? **Y**/*N*`).then((msg) => {
+			message.channel.awaitMessages(m => m.author.id == message.author.id, { max: 1, time: 10000, errors: ["time"] })
+				.then(async collected => {
+					if(collected.first() && collected.first().content.toLowerCase().startsWith("y")) {
+						delete results[args[0]][user.id];
+						await bot.compResults.updateOne({ guildID: message.guild.id }, { $set: { events: results } });
+						return message.channel.send(`Okay, I've deleted ${username}'s time from ${args[0]}!`);
+					} else {
+						return message.channel.send("Action cancelled.");
+					}
+				});
+		})
 	}
 
 	// Helper functions
