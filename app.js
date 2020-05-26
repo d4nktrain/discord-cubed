@@ -48,13 +48,12 @@ bot.on("ready", async () => {
 	bot.suggestions = await db.collection("suggestions");
 
 	console.log("Connected to DB!");
-	await bot.user.setActivity(`Scrambling cubes for ${bot.guilds.size} servers! | s!help`);
-	// await bot.user.setActivity(`s!updates | Scrambling cubes for ${bot.guilds.size} servers`);
+	await bot.user.setActivity(`s!help | Scrambling cubes for ${bot.guilds.size} servers!`);
 	console.log("Scrambler is ready to go!");
 });
 
 bot.on("guildCreate", async guild => {
-	await bot.user.setActivity(`Scrambling cubes for ${bot.guilds.size} servers! | s!help`);
+	await bot.user.setActivity(`s!help | Scrambling cubes for ${bot.guilds.size} servers!`);
 	let guildLog = bot.channels.get("641312002010120193");
 	let joinEmbed = new Discord.RichEmbed()
 		.setColor("#11fc30")
@@ -69,7 +68,7 @@ bot.on("guildCreate", async guild => {
 });
 
 bot.on("guildDelete", async guild => {
-	await bot.user.setActivity(`Scrambling cubes for ${bot.guilds.size} servers! | s!help`);
+	await bot.user.setActivity(`s!help | Scrambling cubes for ${bot.guilds.size} servers!`);
 	let guildLog = bot.channels.get("603604541614587904");
 	let leaveEmbed = new Discord.RichEmbed()
 		.setColor("#fc102c")

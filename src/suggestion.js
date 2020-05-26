@@ -108,7 +108,7 @@ module.exports.run = async (bot, message, args) => {
     let suggestion = args.join(" ")
     if((suggestion.indexOf("1x1") != -1) || (suggestion.indexOf("0x0") != -1) || (suggestion.indexOf("your idea") != -1)) return message.channel.send("no. it could've been funny the first time someone said it, and it still wasn't. stop.")
     bot.fetchUser(message.author.id).then(user => {
-        suggestionsArray.push({"id": (db.get("suggestions").value().length), "suggestion": suggestion, "person": user.tag})
+        suggestionsArray.push({"suggestion": suggestion, "person": user.tag})
         db.write()
     })
     console.log("Wrote " + suggestion + " as a suggestion")
