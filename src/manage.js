@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args, cube) => {
 			for(let i = 0; i < submissions.length; i++) {
 				let sub = results[args[1]][submissions[i]];
 				let user = bot.users.get(sub.userID);
-				sEmbed.addField("User", `Result: ${toMinSec(sub.time)}\nSubmitted: ${sub.timestamp}`, true);
+				sEmbed.addField(user.username + "#" + user.discriminator + " (" + user.id + ")", `Result: ${toMinSec(sub.time)}\nSubmitted: ${sub.timestamp}`, true);
 			}
 			return message.channel.send(sEmbed);
 		} else {
