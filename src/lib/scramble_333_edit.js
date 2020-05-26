@@ -686,8 +686,8 @@ module.exports = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl) 
         getFMCScramble: getFMCScramble,
         //
         // /* added methods */
-        // getEdgeScramble: getEdgeScramble,
-        // getCornerScramble: getCornerScramble,
+        getEdgeScramble: getEdgeScramble,
+        getCornerScramble: getCornerScramble,
         // getLLScramble: getLLScramble,
         // getLSLLScramble: getLSLLScramble,
         // getZBLLScramble: getZBLLScramble,
