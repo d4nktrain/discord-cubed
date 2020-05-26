@@ -98,7 +98,7 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
                     });
                 })
             }
-        } else if(args[0] === "oh") {
+        } else if(args[0] === "oh" || args[0] === "feet") {
             scrambles = parseInt(args[1])
             scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
 
@@ -226,6 +226,26 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
                     });
                 })
             }
+        } else if(args[0] === "superflip") {
+            let scramble = ["1. ", "U R2 F B R B2 R U2 L B2 R U' D' R2 F R' L B2 U2 F2"]
+
+            message.channel.send(scramble.join("")).then((msg) => {
+                msg.react("👀")
+                msg.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👀'),
+                    {max: 1, time: 15000}).then(async collected => {
+                    if (collected.first().count >= 2) {
+                        var imageBuffer = await scrambleImage.genImage("333", scramble[1], "default")
+                        msg.channel.send("1.", {
+                            file: imageBuffer
+                        }).then((image) => {
+                            image.delete(300000*(i+1))
+                        })
+                    }
+                    msg.clearReactions()
+                }).catch(() => {
+                    msg.clearReactions()
+                });
+            })
         } else {
             message.channel.send("Invalid type!")
         }
