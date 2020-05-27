@@ -106,7 +106,7 @@ module.exports.run = async (bot, message, args) => {
         return message.channel.send("Successfully set status!")
     }
     let suggestion = args.join(" ")
-    if((suggestion.indexOf("1x1") != -1) || (suggestion.indexOf("0x0") != -1) || (suggestion.indexOf("your idea") != -1)) return message.channel.send("no. it could've been funny the first time someone said it, and it still wasn't. stop.")
+    if((suggestion.indexOf("1x1") != -1) || (suggestion.indexOf("0x0") != -1) || (suggestion.indexOf("your idea") != -1) || (suggestion.indexOf("|") != -1)) return message.channel.send("your suggestion contains a blacklisted term")
     bot.fetchUser(message.author.id).then(user => {
         suggestionsArray.push({"suggestion": suggestion, "person": user.tag})
         db.write()
