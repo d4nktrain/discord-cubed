@@ -116,15 +116,6 @@ bot.on("message", async message => {
 	}
 	if(message.author.bot) return;
 	if(message.channel.type !== "text") return;
-
-	let botMember = message.guild.member(bot.user)
-
-	if(botMember.displayName.indexOf("UPS") != -1) {
-		message.channel.send("I've detected that my name still contains UPS. I will attempt to rename myself but if I fail then I lack permissions to change my name and a server mod needs to change it!")
-		await botMember.setNickname(botMember.displayName.replace("UPS Scrambler", "Discord^3").replace("Scrambler (UPS)", "Discord^3"))
-		return
-	}
-
 	let messageArr = message.content.split(/\s+/g);
 
 	let prefix1;
@@ -196,6 +187,13 @@ bot.on("message", async message => {
 		if(cmd) {
 			if(getMode() == 1) {
 				return message.channel.send("Bot is currently updating, should be back in 20 seconds or less.")
+			}
+			let botMember = message.guild.member(bot.user)
+
+			if(botMember.displayName.indexOf("UPS") != -1) {
+				message.channel.send("I've detected that my name still contains UPS. I will attempt to rename myself but if I fail then I lack permissions to change my name and a server mod needs to change it!")
+				await botMember.setNickname(botMember.displayName.replace("UPS Scrambler", "Discord^3").replace("Scrambler (UPS)", "Discord^3"))
+				return
 			}
 			try {
 				await cmd.run(bot, message, args, cube, scrambleImage);
