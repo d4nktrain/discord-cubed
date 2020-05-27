@@ -114,11 +114,17 @@ bot.on("message", async message => {
 			}
 		}
 	}
-	let botGuildMember = message.guild.members.get(bot.user.id)
-	let botName = botGuildMember.displayName
-	if(botName.indexOf("Rehosted Scrambler") != -1) botGuildMember.setNickname(botName.replace('Rehosted Scrambler', "Scrambler (UPS)"))
 	if(message.author.bot) return;
 	if(message.channel.type !== "text") return;
+
+	let botMember = message.guild.member(bot.user)
+
+	if(botMember.displayName.indexOf("UPS") != -1) {
+		message.channel.send("I've detected that my name still contains UPS. I will attempt to rename myself but if I fail then I lack permissions to change my name and a server mod needs to change it!")
+		await botMember.setNickname(botMember.displayName.replace("UPS Scrambler", "Discord^3").replace("Scrambler (UPS)", "Discord^3"))
+		return
+	}
+
 	let messageArr = message.content.split(/\s+/g);
 
 	let prefix1;
