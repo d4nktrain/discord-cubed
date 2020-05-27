@@ -693,7 +693,7 @@ module.exports = (function(getNPerm, setNPerm, set8Perm, getNParity, rn, rndEl) 
         // /* added methods */
         getEdgeScramble: getEdgeScramble,
         getCornerScramble: getCornerScramble,
-        // getLLScramble: getLLScramble,
+        getLLScramble: getLLScramble,
         // getLSLLScramble: getLSLLScramble,
         getZBLLScramble: getZBLLScramble,
         // getZZLLScramble: getZZLLScramble,

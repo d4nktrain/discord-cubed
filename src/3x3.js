@@ -281,6 +281,17 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 
                 message.channel.send(scramble.join(""))
             }
+        } else if(args[0] === "ll") {
+            scrambles = parseInt(args[1])
+            scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
+
+            message.channel.send("Make sure the side you want the ll to be on is U").then((msg) => msg.delete(5000))
+
+            for (let i = 0; i < scrambles; i++) {
+                let scramble = [`${i + 1}. `, scramble_333.getLLScramble()]
+
+                message.channel.send(scramble.join(""))
+            }
         } else {
             message.channel.send("Invalid type!")
         }
