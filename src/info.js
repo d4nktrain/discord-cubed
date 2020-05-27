@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Created", bot.user.createdAt)
 		.addField("Description", "UPS Scrambler is a Discord bot that generates scrambles for common twisty puzzles. Concept originated from ecuber#0566, this version of bot has been coded mostly by Bacon#1153, revised with new features by ecuber and danktrain.")
 		.setTimestamp()
-		.setFooter(`Scrambler (UPS)`, bot.user.displayAvatarURL);
+		.setFooter(`Discord^3`, bot.user.displayAvatarURL);
 
 	return message.channel.send({ embed: embed });
 };
