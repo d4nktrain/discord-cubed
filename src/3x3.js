@@ -205,8 +205,10 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
             for(let i = 0; i < scrambles; i++) {
                 let scramble = [`${i + 1}. `]
 
-                if(args[1]) scramble[1] = crossColor(scramble_333.getF2LScramble(), args[1])
-                else scramble[1] = crossColor(scramble_333.getF2LScramble(), "white")
+                let crossScram = scramble_333.getF2LScramble()
+
+                if(args[1]) scramble[1] = crossColor(crossScram, args[1])
+                else scramble[1] = crossColor(crossScram, "white")
 
                 message.channel.send(scramble[0] + "(" + scramble[1][1] + " cross) " + scramble[1][0]).then((msg) => {
                     msg.react("👀")
@@ -246,6 +248,39 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
                     msg.clearReactions()
                 });
             })
+        } else if(args[0] === "pll") {
+            scrambles = parseInt(args[1])
+            scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
+
+            message.channel.send("Make sure the side you want the pll to be on is U").then((msg) => msg.delete(5000))
+
+            for (let i = 0; i < scrambles; i++) {
+                let scramble = [`${i + 1}. `, scramble_333.getPLLScramble()]
+
+                message.channel.send(scramble.join(""))
+            }
+        } else if(args[0] === "oll") {
+            scrambles = parseInt(args[1])
+            scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
+
+            message.channel.send("Make sure the side you want the oll to be on is U").then((msg) => msg.delete(5000))
+
+            for (let i = 0; i < scrambles; i++) {
+                let scramble = [`${i + 1}. `, scramble_333.getOLLScramble()]
+
+                message.channel.send(scramble.join(""))
+            }
+        } else if(args[0] === "zbll") {
+            scrambles = parseInt(args[1])
+            scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1
+
+            message.channel.send("Make sure the side you want the zbll to be on is U").then((msg) => msg.delete(5000))
+
+            for (let i = 0; i < scrambles; i++) {
+                let scramble = [`${i + 1}. `, scramble_333.getZBLLScramble()]
+
+                message.channel.send(scramble.join(""))
+            }
         } else {
             message.channel.send("Invalid type!")
         }
