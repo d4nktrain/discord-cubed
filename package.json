@@ -1,5 +1,5 @@
 {
-  "name": "scrambler",
+  "name": "disc",
   "version": "1.0.0",
   "description": "Scrambler is the original discord bot created for generating scrambles for twisty puzzles.\r This project uses [Scrambo](https://github.com/nickcolley/scrambo) for some scrambles, and cstimer for random state and non-wca magic, All other scrambles and commands were written by the scrambler dev team.",
   "main": "app.js",

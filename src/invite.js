@@ -1,2 +1,0 @@
-module.exports.run = async (bot, message, args, cube) => message.channel.send("Use this link to invite Scrambler to your server! \nhttps://discordapp.com/oauth2/authorize?client_id=603602729805414480&scope=bot&permissions=130048\n\nTo report a bug, make suggestions, or get general help with the bot, you can join the support server here: \nhttps://discord.gg/XBa52r2");
-module.exports.config = { name: "invite", aliases: ["support"] };
