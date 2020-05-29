@@ -12,6 +12,7 @@
   "dependencies": {
     "canvas": "^2.6.1",
     "discord.js": "^11.6.4",
+    "klasa": "github:dirigeants/klasa",
     "lowdb": "^1.0.0",
     "mongodb": "^3.5.7",
     "scramble-image": "^1.1.6",
