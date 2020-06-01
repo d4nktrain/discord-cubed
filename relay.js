@@ -18,7 +18,7 @@ module.exports = {
     */
 
 	twox: function () {
-		return cube.type("222").length(10).get();
+		return fourCube.getScramble("222so", 10)
 	},
 
 	twobld: function () {
