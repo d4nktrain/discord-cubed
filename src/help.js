@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args, cube) => {
 		.addField("Utility", "prefix, ignore, ignored, updates, stats, info, ping, suggest", true)
 		.addField("Comps", "submit, manage, compconfig, config, comp, events, podium")
 		.addField("Famous scrambles (s!famous)", "jay, 3x3wr, leo")
-		.addField("Gifs", "jay, egg, hays, usps, rasmus, pepeadmin", true)
+		.addField("Gifs", "jay, egg, hays, usps, rasmus, pepepls", true)
 		.addField("Documentation", "For detailed instructions on using any of these commands, check out the documentation! https://scrambler.ethanh.xyz/")
 		.setTimestamp()
 		.setFooter(`${bot.user.username}`, bot.user.displayAvatarURL)
