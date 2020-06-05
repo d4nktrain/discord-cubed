@@ -17,6 +17,7 @@ module.exports.run = async (bot, message, args, cube) => {
         args.pop()
         args.shift()
     } else {
+        if(dnfs > 0) return message.channel.send("DNF")
         args.sort((a,b)=>Number(a)-Number(b))
     }
 
