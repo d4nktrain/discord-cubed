@@ -42,7 +42,7 @@ function crossColor(scramble, color) {
 }
 
 module.exports.run = async (bot, message, args, cube, scrambleImage) => {
-    return message.channel.send("This command is depreciated, please use (prefix)3 cross, 3x3x3 cross, or 3x3 cross!")
+    return message.channel.send("This command is deprecated, please use (prefix)3 cross, 3x3x3 cross, or 3x3 cross!")
 
 };
 module.exports.config = { name: "crosssolved", aliases: ["cross"] }
