@@ -1,4 +1,4 @@
-var clock = require("./lib/clockcs")
+var util_scramble = require('./lib/utilscramble')
 
 module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 	if(args[0] === "show") {
@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 	let scrambles = parseInt(args[0]);
 	scrambles = scrambles ? scrambles > 12 ? 12 : scrambles < 0 ? 1 : scrambles : 1;
 	for(let i = 0; i < scrambles; i++) {
-		let scramble = [`${i+1}. `, clock.getScramble()]
+		let scramble = [`${i+1}. `, util_scramble.getClockWCAScramble()]
 
 		message.channel.send(scramble.join("")).then((msg) => {
 			msg.react("👀")
