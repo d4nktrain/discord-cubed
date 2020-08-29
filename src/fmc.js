@@ -19,9 +19,9 @@ module.exports.run = async (bot, message, args, cube) => {
 						image.delete(300000*(i+1))
 					})
 				}
-				msg.clearReactions()
+				msg.clearReactions().catch(error => console.log(error))
 			}).catch(() => {
-				msg.clearReactions()
+				msg.clearReactions().catch(error => console.log(error))
 			});
 		})
 	}
