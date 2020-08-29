@@ -17,9 +17,9 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 						image.delete(300000*(i+1))
 					})
 				}
-				msg.clearReactions()
+				msg.clearReactions().catch(error => console.log(error))
 			}).catch(() => {
-				msg.clearReactions()
+				msg.clearReactions().catch(error => console.log(error))
 			});
 			msg.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '⚡'),
 				{ max: 1, time: 15000 }).then(async collected => {
@@ -31,9 +31,9 @@ module.exports.run = async (bot, message, args, cube, scrambleImage) => {
 						image.delete(300000*(i+1))
 					})
 				}
-				msg.clearReactions()
+				msg.clearReactions().catch(error => console.log(error))
 			}).catch(() => {
-				msg.clearReactions()
+				msg.clearReactions().catch(error => console.log(error))
 			});
 		})
 	}
